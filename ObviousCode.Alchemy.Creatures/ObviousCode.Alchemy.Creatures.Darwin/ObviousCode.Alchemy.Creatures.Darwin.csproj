@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6EA4346-DB1C-449D-8951-E19E76CDDBB3}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ObviousCode.Alchemy.Creatures.Darwin</RootNamespace>
+    <AssemblyName>ObviousCode.Alchemy.Creatures.Darwin</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\ObviousCode.Alchemy\ObviousCode.Alchemy.Library\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ObviousCode.Alchemy.Extensions">
+      <HintPath>..\..\ObviousCode.Alchemy\ObviousCode.Alchemy.Library\bin\Debug\ObviousCode.Alchemy.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="ObviousCode.Alchemy.Library">
+      <HintPath>..\..\ObviousCode.Alchemy\ObviousCode.Alchemy.Library\bin\Debug\ObviousCode.Alchemy.Library.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Environment_RandomNumber.cs" />
+    <Compile Include="Environment.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\ObviousCode.Alchemy.Creatures\ObviousCode.Alchemy.Creatures.csproj">
+      <Project>{EF46E974-0F6E-47F7-A05C-FE4645A16988}</Project>
+      <Name>ObviousCode.Alchemy.Creatures</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

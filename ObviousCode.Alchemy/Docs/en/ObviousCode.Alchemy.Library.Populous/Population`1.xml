@@ -1,0 +1,253 @@
+<Type Name="Population&lt;T&gt;" FullName="ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public class Population&lt;T&gt; : ObviousCode.Alchemy.Library.Populous.Population" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Population`1&lt;T&gt; extends ObviousCode.Alchemy.Library.Populous.Population" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>ObviousCode.Alchemy.Library.Populous.Population</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="T">To be added.</typeparam>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Population ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public void Add (ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt; f);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!T&gt; f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="f" Type="ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateEmptyPopulation">
+      <MemberSignature Language="C#" Value="public static ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt; CreateEmptyPopulation ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class ObviousCode.Alchemy.Library.Populous.Population`1&lt;!T&gt; CreateEmptyPopulation() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GenomeType">
+      <MemberSignature Language="C#" Value="public Type GenomeType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Type GenomeType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Individuals">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;&gt; Individuals { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!T&gt;&gt; Individuals" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Initialise">
+      <MemberSignature Language="C#" Value="public void Initialise ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Initialise() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Initialise">
+      <MemberSignature Language="C#" Value="public void Initialise (ObviousCode.Alchemy.Library.InitialiserContext&lt;T&gt; context);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Initialise(class ObviousCode.Alchemy.Library.InitialiserContext`1&lt;!T&gt; context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="context" Type="ObviousCode.Alchemy.Library.InitialiserContext&lt;T&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Initialise">
+      <MemberSignature Language="C#" Value="public void Initialise (int populationSize, int genomeLength);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Initialise(int32 populationSize, int32 genomeLength) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="populationSize" Type="System.Int32" />
+        <Parameter Name="genomeLength" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="populationSize">To be added.</param>
+        <param name="genomeLength">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Initialise">
+      <MemberSignature Language="C#" Value="public void Initialise (ObviousCode.Alchemy.Library.InitialiserContext&lt;T&gt; context, int populationSize, int genomeLength);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Initialise(class ObviousCode.Alchemy.Library.InitialiserContext`1&lt;!T&gt; context, int32 populationSize, int32 genomeLength) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="context" Type="ObviousCode.Alchemy.Library.InitialiserContext&lt;T&gt;" />
+        <Parameter Name="populationSize" Type="System.Int32" />
+        <Parameter Name="genomeLength" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="context">To be added.</param>
+        <param name="populationSize">To be added.</param>
+        <param name="genomeLength">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsInitialPopulation">
+      <MemberSignature Language="C#" Value="public bool IsInitialPopulation { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsInitialPopulation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt; this[int idx] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!T&gt; Item(int32)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idx" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="idx">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopulationSize">
+      <MemberSignature Language="C#" Value="public int PopulationSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 PopulationSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Repopulate">
+      <MemberSignature Language="C#" Value="public void Repopulate (ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt; nextGen);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Repopulate(class ObviousCode.Alchemy.Library.Populous.Population`1&lt;!T&gt; nextGen) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nextGen" Type="ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="nextGen">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

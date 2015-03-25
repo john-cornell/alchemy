@@ -1,0 +1,90 @@
+<Type Name="DoubleBasedGenomeInitialiser" FullName="ObviousCode.Alchemy.Library.DoubleBasedGenomeInitialiser">
+  <TypeSignature Language="C#" Value="public class DoubleBasedGenomeInitialiser : ObviousCode.Alchemy.Library.IndividualInitialiser&lt;double&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DoubleBasedGenomeInitialiser extends ObviousCode.Alchemy.Library.IndividualInitialiser`1&lt;float64&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>ObviousCode.Alchemy.Library.IndividualInitialiser&lt;System.Double&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">System.Double</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DoubleBasedGenomeInitialiser ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BeforeInitialisation">
+      <MemberSignature Language="C#" Value="protected override void BeforeInitialisation (Newtonsoft.Json.Linq.JObject properties);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void BeforeInitialisation(class Newtonsoft.Json.Linq.JObject properties) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="properties" Type="Newtonsoft.Json.Linq.JObject" />
+      </Parameters>
+      <Docs>
+        <param name="properties">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetNextValue">
+      <MemberSignature Language="C#" Value="protected override double GetNextValue (int idx);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance float64 GetNextValue(int32 idx) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idx" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="idx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRandomValue">
+      <MemberSignature Language="C#" Value="public override double GetRandomValue ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance float64 GetRandomValue() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,82 @@
+<Type Name="IntBasedGenomeInitialiserContext" FullName="ObviousCode.Alchemy.Library.IntBasedGenomeInitialiserContext">
+  <TypeSignature Language="C#" Value="public class IntBasedGenomeInitialiserContext : ObviousCode.Alchemy.Library.InitialiserContext&lt;int&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit IntBasedGenomeInitialiserContext extends ObviousCode.Alchemy.Library.InitialiserContext`1&lt;int32&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>ObviousCode.Alchemy.Library.InitialiserContext&lt;System.Int32&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">System.Int32</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public IntBasedGenomeInitialiserContext ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BeforeSerialisation">
+      <MemberSignature Language="C#" Value="protected override void BeforeSerialisation ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void BeforeSerialisation() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Max">
+      <MemberSignature Language="C#" Value="public int Max { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Max" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Min">
+      <MemberSignature Language="C#" Value="public int Min { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Min" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

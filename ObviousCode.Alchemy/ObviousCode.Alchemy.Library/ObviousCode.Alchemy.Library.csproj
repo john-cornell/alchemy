@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{390829F8-1706-4B9D-B502-56ED1791E08A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ObviousCode.Alchemy.Library</RootNamespace>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Populous\Individual.cs" />
+    <Compile Include="Populous\Population.cs" />
+    <Compile Include="Exceptions\GenomeNotInitialisedException.cs" />
+    <Compile Include="Exceptions\PopulationNotInitialisedException.cs" />
+    <Compile Include="Initilisation\Initialisers\IndividualInitialiser.cs" />
+    <Compile Include="Initilisation\Initialisers\InitialiserProvider.cs" />
+    <Compile Include="Exceptions\InitialiserNotAvailableException.cs" />
+    <Compile Include="Initilisation\Initialisers\ByteBasedGenomeInitialiser.cs" />
+    <Compile Include="Initilisation\Initialisers\Context\InitialiserContextProvider.cs" />
+    <Compile Include="Initilisation\Initialisers\Context\InitialiserContext.cs" />
+    <Compile Include="Exceptions\InitialiserContextNotAvailableException.cs" />
+    <Compile Include="Initilisation\Initialisers\Context\ByteBasedGenomeInitialiserContext.cs" />
+    <Compile Include="Initilisation\Initialisers\Context\IntBasedGenomeInitialiserContext.cs" />
+    <Compile Include="Initilisation\Initialisers\IntBasedGenomeInitialiser.cs" />
+    <Compile Include="Initilisation\Initialisers\Context\BoolBasedGenomeInitialiserContext.cs" />
+    <Compile Include="Initilisation\Initialisers\BoolBasedGenomeInitialiser.cs" />
+    <Compile Include="Evaluation\Evaluator.cs" />
+    <Compile Include="Config\ConfigurationProvider.cs" />
+    <Compile Include="Config\IndividualConfiguration.cs" />
+    <Compile Include="Config\PopulousConfiguration.cs" />
+    <Compile Include="Config\SelectionConfiguration.cs" />
+    <Compile Include="Selection\Selector.cs" />
+    <Compile Include="Selection\SelectionProvider.cs" />
+    <Compile Include="Selection\TournamentSelector.cs" />
+    <Compile Include="Selection\IndexedFitness.cs" />
+    <Compile Include="Selection\TruncationSelector.cs" />
+    <Compile Include="Selection\RouletteSelector.cs" />
+    <Compile Include="Exceptions\SelectorNotAvailableException.cs" />
+    <Compile Include="Config\MutationConfiguration.cs" />
+    <Compile Include="Mutation\MutationProvider.cs" />
+    <Compile Include="Mutation\Mutator.cs" />
+    <Compile Include="Exceptions\MutatorNotAvailableException .cs" />
+    <Compile Include="Mutation\IntBasedMutator.cs" />
+    <Compile Include="Mutation\BoolBasedMutator.cs" />
+    <Compile Include="Mutation\ByteBasedMutation.cs" />
+    <Compile Include="Exceptions\UncheckedVarianceOutOfBoundsException.cs" />
+    <Compile Include="Mutation\DoubleBasedMutator.cs" />
+    <Compile Include="Initilisation\Initialisers\DoubleBasedGenomeInitialiser.cs" />
+    <Compile Include="Initilisation\Initialisers\Context\DoubleBasedGenomeInitialiserContext.cs" />
+    <Compile Include="Config\CrossoverConfiguration.cs" />
+    <Compile Include="Crossover\Crossover.cs" />
+    <Compile Include="Crossover\CrossoverProvider.cs" />
+    <Compile Include="Crossover\OnePointCrossover.cs" />
+    <Compile Include="Crossover\CrossoverLogEntry.cs" />
+    <Compile Include="Crossover\CrossoverLog.cs" />
+    <Compile Include="Crossover\TwoPointCrossover.cs" />
+    <Compile Include="Crossover\RandomCrossover.cs" />
+    <Compile Include="Engine\Engine.cs" />
+    <Compile Include="EventArgs\FitnessSelectionEventArgs.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Evaluation\" />
+    <Folder Include="Crossover\" />
+    <Folder Include="Mutation\" />
+    <Folder Include="Initilisation\" />
+    <Folder Include="Populous\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Initilisation\Initialisers\" />
+    <Folder Include="Initilisation\Initialisers\Context\" />
+    <Folder Include="Config\" />
+    <Folder Include="Selection\" />
+    <Folder Include="Engine\" />
+    <Folder Include="EventArgs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ObviousCode.Alchemy.Extensions\ObviousCode.Alchemy.Extensions.csproj">
+      <Project>{E67D2B27-EF5B-4E11-88F1-5350CE815E28}</Project>
+      <Name>ObviousCode.Alchemy.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

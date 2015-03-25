@@ -1,0 +1,67 @@
+<Type Name="InitialiserContext&lt;T&gt;" FullName="ObviousCode.Alchemy.Library.InitialiserContext&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public class InitialiserContext&lt;T&gt; : ObviousCode.Alchemy.Library.InitialiserContext" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit InitialiserContext`1&lt;T&gt; extends ObviousCode.Alchemy.Library.InitialiserContext" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>ObviousCode.Alchemy.Library.InitialiserContext</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="T">To be added.</typeparam>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public InitialiserContext ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GenomeType">
+      <MemberSignature Language="C#" Value="public override sealed Type GenomeType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Type GenomeType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public override string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

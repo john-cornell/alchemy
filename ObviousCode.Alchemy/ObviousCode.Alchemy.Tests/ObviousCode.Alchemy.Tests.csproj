@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD5D5213-12A0-411E-9384-39933473EB3C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ObviousCode.Alchemy.Tests</RootNamespace>
+    <AssemblyName>ObviousCode.Alchemy.Tests</AssemblyName>
+    <StartupObject>ObviousCode.Alchemy.Tests.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IndividualTests.cs" />
+    <Compile Include="PopulationTests.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="InitialisationTests.cs" />
+    <Compile Include="InitialiserContextTests.cs" />
+    <Compile Include="SelectionTests.cs" />
+    <Compile Include="MutatorTests.cs" />
+    <Compile Include="CrossoverTests.cs" />
+    <Compile Include="EngineTests.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\ObviousCode.Alchemy.Library\ObviousCode.Alchemy.Library.csproj">
+      <Project>{390829F8-1706-4B9D-B502-56ED1791E08A}</Project>
+      <Name>ObviousCode.Alchemy.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObviousCode.Alchemy.Extensions\ObviousCode.Alchemy.Extensions.csproj">
+      <Project>{E67D2B27-EF5B-4E11-88F1-5350CE815E28}</Project>
+      <Name>ObviousCode.Alchemy.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

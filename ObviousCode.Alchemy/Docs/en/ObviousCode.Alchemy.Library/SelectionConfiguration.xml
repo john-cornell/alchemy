@@ -1,0 +1,126 @@
+<Type Name="SelectionConfiguration" FullName="ObviousCode.Alchemy.Library.SelectionConfiguration">
+  <TypeSignature Language="C#" Value="public class SelectionConfiguration" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit SelectionConfiguration extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public SelectionConfiguration ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_ratioOfFittestInTruncationSelection">
+      <MemberSignature Language="C#" Value="public decimal _ratioOfFittestInTruncationSelection;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Decimal _ratioOfFittestInTruncationSelection" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Decimal</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForcedRouletteThreshold">
+      <MemberSignature Language="C#" Value="public Nullable&lt;double&gt; ForcedRouletteThreshold { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;float64&gt; ForcedRouletteThreshold" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Double&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfFittestSelected">
+      <MemberSignature Language="C#" Value="public int NumberOfFittestSelected { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NumberOfFittestSelected" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RatioOfFittestInTruncationSelection">
+      <MemberSignature Language="C#" Value="public decimal RatioOfFittestInTruncationSelection { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Decimal RatioOfFittestInTruncationSelection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Decimal</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RouletteFitnessSortDirection">
+      <MemberSignature Language="C#" Value="public ObviousCode.Alchemy.Library.SelectionConfiguration.RouletteFitnessDirection RouletteFitnessSortDirection { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype ObviousCode.Alchemy.Library.SelectionConfiguration/RouletteFitnessDirection RouletteFitnessSortDirection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.SelectionConfiguration+RouletteFitnessDirection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectionMethod">
+      <MemberSignature Language="C#" Value="public ObviousCode.Alchemy.Library.SelectionType SelectionMethod { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype ObviousCode.Alchemy.Library.SelectionType SelectionMethod" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.SelectionType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

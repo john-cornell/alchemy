@@ -1,0 +1,58 @@
+<Type Name="TwoPointCrossover" FullName="ObviousCode.Alchemy.Library.TwoPointCrossover">
+  <TypeSignature Language="C#" Value="public class TwoPointCrossover : ObviousCode.Alchemy.Library.Crossover" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TwoPointCrossover extends ObviousCode.Alchemy.Library.Crossover" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>ObviousCode.Alchemy.Library.Crossover</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TwoPointCrossover ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopulateChild&lt;T&gt;">
+      <MemberSignature Language="C#" Value="protected override void PopulateChild&lt;T&gt; (ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt; child, ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt; parent1, ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt; parent2);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void PopulateChild&lt;T&gt;(class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!!T&gt; child, class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!!T&gt; parent1, class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!!T&gt; parent2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="child" Type="ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;" />
+        <Parameter Name="parent1" Type="ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;" />
+        <Parameter Name="parent2" Type="ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="child">To be added.</param>
+        <param name="parent1">To be added.</param>
+        <param name="parent2">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

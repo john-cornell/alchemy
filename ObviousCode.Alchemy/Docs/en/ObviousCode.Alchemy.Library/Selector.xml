@@ -1,0 +1,153 @@
+<Type Name="Selector" FullName="ObviousCode.Alchemy.Library.Selector">
+  <TypeSignature Language="C#" Value="public abstract class Selector" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit Selector extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Selector (ObviousCode.Alchemy.Library.SelectionType method);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype ObviousCode.Alchemy.Library.SelectionType method) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="method" Type="ObviousCode.Alchemy.Library.SelectionType" />
+      </Parameters>
+      <Docs>
+        <param name="method">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; protected set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnAfterSelection">
+      <MemberSignature Language="C#" Value="protected virtual void OnAfterSelection ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnAfterSelection() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnBeforeSelection">
+      <MemberSignature Language="C#" Value="protected virtual void OnBeforeSelection (System.Collections.Generic.List&lt;ObviousCode.Alchemy.Library.IndexedFitness&gt; indexedFitness);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnBeforeSelection(class System.Collections.Generic.List`1&lt;class ObviousCode.Alchemy.Library.IndexedFitness&gt; indexedFitness) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="indexedFitness" Type="System.Collections.Generic.List&lt;ObviousCode.Alchemy.Library.IndexedFitness&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="indexedFitness">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PerformSelection&lt;T&gt;">
+      <MemberSignature Language="C#" Value="protected abstract System.Collections.Generic.IEnumerable&lt;ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;&gt; PerformSelection&lt;T&gt; (ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt; population, System.Collections.Generic.List&lt;ObviousCode.Alchemy.Library.IndexedFitness&gt; fitness);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!!T&gt;&gt; PerformSelection&lt;T&gt;(class ObviousCode.Alchemy.Library.Populous.Population`1&lt;!!T&gt; population, class System.Collections.Generic.List`1&lt;class ObviousCode.Alchemy.Library.IndexedFitness&gt; fitness) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="population" Type="ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt;" />
+        <Parameter Name="fitness" Type="System.Collections.Generic.List&lt;ObviousCode.Alchemy.Library.IndexedFitness&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="population">To be added.</param>
+        <param name="fitness">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectFittest&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;&gt; SelectFittest&lt;T&gt; (ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt; population, double[] fitness);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IEnumerable`1&lt;class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!!T&gt;&gt; SelectFittest&lt;T&gt;(class ObviousCode.Alchemy.Library.Populous.Population`1&lt;!!T&gt; population, float64[] fitness) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="population" Type="ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt;" />
+        <Parameter Name="fitness" Type="System.Double[]" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="population">To be added.</param>
+        <param name="fitness">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectionMethod">
+      <MemberSignature Language="C#" Value="public ObviousCode.Alchemy.Library.SelectionType SelectionMethod { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype ObviousCode.Alchemy.Library.SelectionType SelectionMethod" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.SelectionType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

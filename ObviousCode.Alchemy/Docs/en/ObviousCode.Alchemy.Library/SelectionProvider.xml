@@ -1,0 +1,90 @@
+<Type Name="SelectionProvider" FullName="ObviousCode.Alchemy.Library.SelectionProvider">
+  <TypeSignature Language="C#" Value="public static class SelectionProvider" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed SelectionProvider extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static void Add (ObviousCode.Alchemy.Library.Selector selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Add(class ObviousCode.Alchemy.Library.Selector selector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="ObviousCode.Alchemy.Library.Selector" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSelector">
+      <MemberSignature Language="C#" Value="public static ObviousCode.Alchemy.Library.Selector GetSelector ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class ObviousCode.Alchemy.Library.Selector GetSelector() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.Selector</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSelector">
+      <MemberSignature Language="C#" Value="public static ObviousCode.Alchemy.Library.Selector GetSelector (ObviousCode.Alchemy.Library.SelectionType method);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class ObviousCode.Alchemy.Library.Selector GetSelector(valuetype ObviousCode.Alchemy.Library.SelectionType method) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.Selector</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="method" Type="ObviousCode.Alchemy.Library.SelectionType" />
+      </Parameters>
+      <Docs>
+        <param name="method">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reset">
+      <MemberSignature Language="C#" Value="public static void Reset ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Reset() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

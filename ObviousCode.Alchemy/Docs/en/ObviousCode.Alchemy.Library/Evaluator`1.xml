@@ -1,0 +1,115 @@
+<Type Name="Evaluator&lt;T&gt;" FullName="ObviousCode.Alchemy.Library.Evaluator&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public abstract class Evaluator&lt;T&gt; : ObviousCode.Alchemy.Library.Evaluator" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit Evaluator`1&lt;T&gt; extends ObviousCode.Alchemy.Library.Evaluator" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>ObviousCode.Alchemy.Library.Evaluator</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="T">To be added.</typeparam>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Evaluator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public double[] Evaluate (ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;[] individuals);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[] Evaluate(class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!T&gt;[] individuals) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="individuals" Type="ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;[]" />
+      </Parameters>
+      <Docs>
+        <param name="individuals">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public double[] Evaluate (ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt; population);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[] Evaluate(class ObviousCode.Alchemy.Library.Populous.Population`1&lt;!T&gt; population) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="population" Type="ObviousCode.Alchemy.Library.Populous.Population&lt;T&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="population">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public double[] Evaluate (System.Collections.Generic.List&lt;ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;&gt; individuals);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[] Evaluate(class System.Collections.Generic.List`1&lt;class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!T&gt;&gt; individuals) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="individuals" Type="System.Collections.Generic.List&lt;ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="individuals">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EvaluateItem">
+      <MemberSignature Language="C#" Value="protected abstract double EvaluateItem (ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt; item);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float64 EvaluateItem(class ObviousCode.Alchemy.Library.Populous.Individual`1&lt;!T&gt; item) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="item" Type="ObviousCode.Alchemy.Library.Populous.Individual&lt;T&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

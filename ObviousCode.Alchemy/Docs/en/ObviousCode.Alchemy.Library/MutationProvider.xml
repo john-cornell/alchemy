@@ -1,0 +1,74 @@
+<Type Name="MutationProvider" FullName="ObviousCode.Alchemy.Library.MutationProvider">
+  <TypeSignature Language="C#" Value="public static class MutationProvider" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed MutationProvider extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AddMutator">
+      <MemberSignature Language="C#" Value="public static void AddMutator (ObviousCode.Alchemy.Library.Mutator mutator);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AddMutator(class ObviousCode.Alchemy.Library.Mutator mutator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mutator" Type="ObviousCode.Alchemy.Library.Mutator" />
+      </Parameters>
+      <Docs>
+        <param name="mutator">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMutator&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static ObviousCode.Alchemy.Library.Mutator&lt;T&gt; GetMutator&lt;T&gt; ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class ObviousCode.Alchemy.Library.Mutator`1&lt;!!T&gt; GetMutator&lt;T&gt;() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.Mutator&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters />
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reset">
+      <MemberSignature Language="C#" Value="public static void Reset ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Reset() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

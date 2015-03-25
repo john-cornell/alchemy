@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObviousCode.Alchemy.Library", "ObviousCode.Alchemy.Library\ObviousCode.Alchemy.Library.csproj", "{390829F8-1706-4B9D-B502-56ED1791E08A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObviousCode.Alchemy.Tests", "ObviousCode.Alchemy.Tests\ObviousCode.Alchemy.Tests.csproj", "{CD5D5213-12A0-411E-9384-39933473EB3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObviousCode.Alchemy.Extensions", "ObviousCode.Alchemy.Extensions\ObviousCode.Alchemy.Extensions.csproj", "{E67D2B27-EF5B-4E11-88F1-5350CE815E28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{390829F8-1706-4B9D-B502-56ED1791E08A}.Debug|x86.ActiveCfg = Debug|x86
+		{390829F8-1706-4B9D-B502-56ED1791E08A}.Debug|x86.Build.0 = Debug|x86
+		{390829F8-1706-4B9D-B502-56ED1791E08A}.Release|x86.ActiveCfg = Release|x86
+		{390829F8-1706-4B9D-B502-56ED1791E08A}.Release|x86.Build.0 = Release|x86
+		{CD5D5213-12A0-411E-9384-39933473EB3C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CD5D5213-12A0-411E-9384-39933473EB3C}.Debug|x86.Build.0 = Debug|Any CPU
+		{CD5D5213-12A0-411E-9384-39933473EB3C}.Release|x86.ActiveCfg = Release|Any CPU
+		{CD5D5213-12A0-411E-9384-39933473EB3C}.Release|x86.Build.0 = Release|Any CPU
+		{E67D2B27-EF5B-4E11-88F1-5350CE815E28}.Debug|x86.ActiveCfg = Debug|x86
+		{E67D2B27-EF5B-4E11-88F1-5350CE815E28}.Debug|x86.Build.0 = Debug|x86
+		{E67D2B27-EF5B-4E11-88F1-5350CE815E28}.Release|x86.ActiveCfg = Release|x86
+		{E67D2B27-EF5B-4E11-88F1-5350CE815E28}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ObviousCode.Alchemy.Tests\ObviousCode.Alchemy.Tests.csproj
+	EndGlobalSection
+EndGlobal

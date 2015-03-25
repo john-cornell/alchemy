@@ -1,0 +1,74 @@
+<Type Name="InitialiserProvider" FullName="ObviousCode.Alchemy.Library.InitialiserProvider">
+  <TypeSignature Language="C#" Value="public static class InitialiserProvider" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed InitialiserProvider extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AddInitialiser">
+      <MemberSignature Language="C#" Value="public static void AddInitialiser (ObviousCode.Alchemy.Library.IndividualInitialiser initialiser);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AddInitialiser(class ObviousCode.Alchemy.Library.IndividualInitialiser initialiser) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="initialiser" Type="ObviousCode.Alchemy.Library.IndividualInitialiser" />
+      </Parameters>
+      <Docs>
+        <param name="initialiser">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInitialiser&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static ObviousCode.Alchemy.Library.IndividualInitialiser&lt;T&gt; GetInitialiser&lt;T&gt; ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class ObviousCode.Alchemy.Library.IndividualInitialiser`1&lt;!!T&gt; GetInitialiser&lt;T&gt;() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.IndividualInitialiser&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters />
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reset">
+      <MemberSignature Language="C#" Value="public static void Reset ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Reset() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

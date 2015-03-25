@@ -1,0 +1,110 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="ObviousCode.Alchemy.Library" Version="1.0.5553.31673">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.IgnoreSymbolStoreSequencePoints | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyConfiguration("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("root")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("ObviousCode.Alchemy.Library")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTrademark("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.0", FrameworkDisplayName="")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>To be added.</Remarks>
+  <Copyright>To be added.</Copyright>
+  <Types>
+    <Namespace Name="ObviousCode.Alchemy.Library">
+      <Type Name="BoolBasedGenomeInitialiser" Kind="Class" />
+      <Type Name="BoolBasedGenomeInitialiserContext" Kind="Class" />
+      <Type Name="BoolBasedMutator" Kind="Class" />
+      <Type Name="ByteBasedGenomeInitialiser" Kind="Class" />
+      <Type Name="ByteBasedGenomeInitialiserContext" Kind="Class" />
+      <Type Name="ByteBasedMutator" Kind="Class" />
+      <Type Name="ConfigurationProvider" Kind="Class" />
+      <Type Name="Crossover" Kind="Class" />
+      <Type Name="Crossover+CrossoverType" Kind="Enumeration" />
+      <Type Name="CrossoverConfiguration" Kind="Class" />
+      <Type Name="CrossoverLog" Kind="Class" />
+      <Type Name="CrossoverLogEntry" Kind="Class" />
+      <Type Name="CrossoverProvider" Kind="Class" />
+      <Type Name="DoubleBasedGenomeInitialiser" Kind="Class" />
+      <Type Name="DoubleBasedGenomeInitialiserContext" Kind="Class" />
+      <Type Name="DoubleBasedMutator" Kind="Class" />
+      <Type Name="Engine`1" DisplayName="Engine&lt;T&gt;" Kind="Class" />
+      <Type Name="Evaluator" Kind="Class" />
+      <Type Name="Evaluator`1" DisplayName="Evaluator&lt;T&gt;" Kind="Class" />
+      <Type Name="IndexedFitness" Kind="Class" />
+      <Type Name="IndividualConfiguration" Kind="Class" />
+      <Type Name="IndividualInitialiser" Kind="Class" />
+      <Type Name="IndividualInitialiser`1" DisplayName="IndividualInitialiser&lt;T&gt;" Kind="Class" />
+      <Type Name="InitialiserContext" Kind="Class" />
+      <Type Name="InitialiserContext`1" DisplayName="InitialiserContext&lt;T&gt;" Kind="Class" />
+      <Type Name="InitialiserContextNotAvailableException" Kind="Class" />
+      <Type Name="InitialiserContextProvider" Kind="Class" />
+      <Type Name="InitialiserNotAvailableException" Kind="Class" />
+      <Type Name="InitialiserProvider" Kind="Class" />
+      <Type Name="IntBasedGenomeInitialiser" Kind="Class" />
+      <Type Name="IntBasedGenomeInitialiserContext" Kind="Class" />
+      <Type Name="IntBasedMutator" Kind="Class" />
+      <Type Name="MutationConfiguration" Kind="Class" />
+      <Type Name="MutationConfiguration+MutationStyle" Kind="Enumeration" />
+      <Type Name="MutationProvider" Kind="Class" />
+      <Type Name="Mutator" Kind="Class" />
+      <Type Name="Mutator`1" DisplayName="Mutator&lt;T&gt;" Kind="Class" />
+      <Type Name="MutatorNotAvailableException" Kind="Class" />
+      <Type Name="OnePointCrossover" Kind="Class" />
+      <Type Name="OnePointCrossoverLogEntry" Kind="Class" />
+      <Type Name="PopulousConfiguration" Kind="Class" />
+      <Type Name="RandomCrossover" Kind="Class" />
+      <Type Name="RandomCrossoverLogEntry" Kind="Class" />
+      <Type Name="RouletteSelector" Kind="Class" />
+      <Type Name="SelectionConfiguration" Kind="Class" />
+      <Type Name="SelectionConfiguration+RouletteFitnessDirection" Kind="Enumeration" />
+      <Type Name="SelectionProvider" Kind="Class" />
+      <Type Name="SelectionType" Kind="Enumeration" />
+      <Type Name="Selector" Kind="Class" />
+      <Type Name="SelectorNotAvailableException" Kind="Class" />
+      <Type Name="TournamentSelector" Kind="Class" />
+      <Type Name="TruncationSelector" Kind="Class" />
+      <Type Name="TwoPointCrossover" Kind="Class" />
+      <Type Name="TwoPointCrossoverLogEntry" Kind="Class" />
+      <Type Name="UncheckedVarianceOutOfBoundsException" Kind="Class" />
+    </Namespace>
+    <Namespace Name="ObviousCode.Alchemy.Library.Exceptions">
+      <Type Name="GenomeNotInitialisedException" Kind="Class" />
+      <Type Name="PopulationNotInitialisedException" Kind="Class" />
+    </Namespace>
+    <Namespace Name="ObviousCode.Alchemy.Library.Populous">
+      <Type Name="Individual" Kind="Class" />
+      <Type Name="Individual`1" DisplayName="Individual&lt;T&gt;" Kind="Class" />
+      <Type Name="Population" Kind="Class" />
+      <Type Name="Population`1" DisplayName="Population&lt;T&gt;" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>ObviousCode.Alchemy.Library</Title>
+</Overview>

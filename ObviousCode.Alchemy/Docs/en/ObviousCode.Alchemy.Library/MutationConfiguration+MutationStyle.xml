@@ -1,0 +1,45 @@
+<Type Name="MutationConfiguration+MutationStyle" FullName="ObviousCode.Alchemy.Library.MutationConfiguration+MutationStyle">
+  <TypeSignature Language="C#" Value="public enum MutationConfiguration.MutationStyle" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed MutationConfiguration/MutationStyle extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>ObviousCode.Alchemy.Library</AssemblyName>
+    <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Full">
+      <MemberSignature Language="C#" Value="Full" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype ObviousCode.Alchemy.Library.MutationConfiguration/MutationStyle Full = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.MutationConfiguration+MutationStyle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Variance">
+      <MemberSignature Language="C#" Value="Variance" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype ObviousCode.Alchemy.Library.MutationConfiguration/MutationStyle Variance = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.5553.31673</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>ObviousCode.Alchemy.Library.MutationConfiguration+MutationStyle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
