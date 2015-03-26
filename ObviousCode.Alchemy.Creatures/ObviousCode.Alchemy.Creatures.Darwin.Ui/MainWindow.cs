@@ -59,24 +59,38 @@ public partial class MainWindow: Gtk.Window
 		Creature c1 = _currentEvaluator.LastPopulation [i1.Uid];
 		Creature c2 = _currentEvaluator.LastPopulation [i2.Uid];
 
-		_fitness1.Text = i1.Fitness.ToString ();
-		_fitness2.Text = i2.Fitness.ToString ();
+		int MaxLength = 8;
+
+		_fitness1.Text = Limit (i1.Fitness.ToString (), MaxLength);
+		_fitness2.Text = Limit (i2.Fitness.ToString (), MaxLength);
 
 		_energy1.Text = c1.Energy.ToString ();
+		_state1.Text = c1.CauseOfDeath.ToString ();
 		_max1.Text = c1.MaximumEnergy.ToString ();
 		_dCost1.Text = c1.DigestionCost.ToString ();
 		_eCost1.Text = c1.EnzymeProcessCost.ToString ();
 		_enzC1.Text = c1.Enzymes.Count.ToString ();
-		_ex1.Text = c1.EnergyExtractionRatio.ToString ();
+		_ex1.Text = Limit (c1.EnergyExtractionRatio.ToString (), MaxLength);
 		_fEnz1.Text = c1.Enzymes [0].ToString ();
+		_sEnz1.Text = c1.Enzymes.Count > 1 ? c1.Enzymes [1].ToString () : "N/A";
 
 		_energy2.Text = c2.Energy.ToString ();
+		_state2.Text = c2.CauseOfDeath.ToString ();
 		_max2.Text = c2.MaximumEnergy.ToString ();
 		_dCost2.Text = c2.DigestionCost.ToString ();
 		_eCost2.Text = c2.EnzymeProcessCost.ToString ();
 		_enzC2.Text = c2.Enzymes.Count.ToString ();
-		_ex2.Text = c2.EnergyExtractionRatio.ToString ();
+		_ex2.Text = Limit (c2.EnergyExtractionRatio.ToString (), MaxLength);
 		_fEnz2.Text = c2.Enzymes [0].ToString ();
+		_sEnz2.Text = c2.Enzymes.Count > 1 ? c2.Enzymes [1].ToString () : "N/A";
+	}
+
+	public string Limit (string value, int maxLength)
+	{
+		if (value.Length > maxLength)
+			value = value.Substring (0, maxLength);
+
+		return value;
 	}
 
 	void HandleNextGenerationAvailable (object sender, PopulationEventArgs e)
@@ -173,6 +187,13 @@ public partial class MainWindow: Gtk.Window
 	{
 		Application.Quit ();
 		a.RetVal = true;
+	}
+
+	protected void OnButton1Clicked (object sender, EventArgs e)
+	{
+		LoadCurrentEvaluator ();
+
+		_generationLabel.Text = "0";
 	}
 }
 	
