@@ -4,7 +4,7 @@ using ObviousCode.Alchemy.Library.Populous;
 namespace ObviousCode.Alchemy.Creatures.Darwin
 {
 	public class PopulationEventArgs : EventArgs
-	{	
+	{
 		public PopulationEventArgs (Population<byte> population, int generation)
 		{
 			Population = population;

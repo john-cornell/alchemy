@@ -44,6 +44,7 @@
     <Compile Include="Environment_RandomNumber.cs" />
     <Compile Include="Environment.cs" />
     <Compile Include="EventArgs\PopulationEventArgs.cs" />
+    <Compile Include="EventArgs\AfterSelectionStateEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

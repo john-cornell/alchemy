@@ -2,6 +2,7 @@
 using ObviousCode.Alchemy.Library;
 using ObviousCode.Alchemy.Library.Populous;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ObviousCode.Alchemy.Creatures.Darwin
 {
@@ -9,10 +10,15 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 	{
 		public Engine<byte> Engine  { get; private set; }
 
-		public event EventHandler<FitnessSelectionEventArgs<byte>> FitnessSelectionAvailable;
+		public event EventHandler<AfterSelectionStateEventArgs> AfterSelectionStateAvailable;
 		public event EventHandler<PopulationEventArgs> NextGenerationAvailable;
 
-		public Environment (string label)
+		public Environment (string label) : this (label, null)
+		{
+
+		}
+
+		public Environment (string label, Action<Engine<byte>> setup)
 		{
 			Label = label;
 			LifetimeIterations = 1000;
@@ -20,15 +26,26 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 
 			Engine = new Engine<byte> (this);
 
-			Engine.Setup (10000, 32);	
+			if (setup != null) {
+				setup (Engine);
+			} else {
+				Engine.Setup (10000, 32);
+			}
 
 			LastPopulation = new Dictionary<string, Creature> ();
 
 			BeforeGeneration ();
 
 			Engine.FitnessSelectionAvailable += (sender, e) => {
-				if (FitnessSelectionAvailable != null) {
-					FitnessSelectionAvailable (sender, e);
+				if (AfterSelectionStateAvailable != null) {
+					var args = new AfterSelectionStateEventArgs ();
+					
+					e.Selection.ForEach (s => args.Selection.Add (s));
+
+					LastPopulation						
+						.ForEach (kvp => args.LastPopulation [kvp.Key] = kvp.Value);
+
+					AfterSelectionStateAvailable (sender, args);
 				}
 			};
 		}

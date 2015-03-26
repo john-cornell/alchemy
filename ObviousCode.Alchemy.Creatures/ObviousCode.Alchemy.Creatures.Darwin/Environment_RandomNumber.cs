@@ -9,9 +9,14 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 	{
 		Random _random;
 
-		public Environment_RandomNumber () : base ("Random")
+		public Environment_RandomNumber (Action<Engine<byte>> setup) : base ("Random", setup)
 		{
 			_random = new Random ();
+		}
+
+		public Environment_RandomNumber () : this (null)
+		{
+			
 		}
 
 		protected override Population<byte> ExecuteOneGeneration ()
