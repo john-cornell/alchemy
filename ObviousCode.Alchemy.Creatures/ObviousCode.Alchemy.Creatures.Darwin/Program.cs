@@ -12,16 +12,11 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 		{
 			_randoms = new Environment_RandomNumber ();
 
-			_randoms.Engine.FitnessSelectionAvailable += (sender, e) => {
-				Creature creature = Incubator.Incubate(e.Selection[0].Code);
-			};
-				
-
 			for (_generation = 0; _generation < 10000; _generation++) {
 
 				_randoms.Engine.ExecuteOneGeneration ();			
 
-				_randoms.ResetForNextGeneration ();
+				_randoms.BeforeGeneration ();
 			}
 		}
 	}

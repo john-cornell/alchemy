@@ -7,70 +7,40 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 {
 	public class Environment_RandomNumber : Environment
 	{
-		Engine<byte> _engine;
-
-		public Engine<byte> Engine {
-			get {
-				return _engine;
-			}
+		public Environment_RandomNumber () : base ("Random")
+		{
 		}
 
-		public Environment_RandomNumber () : base("Random")
+		protected override Population<byte> ExecuteOneGeneration ()
 		{
-			_engine = new Engine<byte> (
-				this
-			);
+			return Engine.ExecuteOneGeneration ();
+		}
 
-			_engine.Setup (10000, 32);	
-
-			ResetForNextGeneration ();
-		}			
-
-		#region implemented abstract members of Evaluator
-
-		public Dictionary<string, Creature> LastPopulation { get; private set; }
-
-		protected override double EvaluateItem (Individual<byte> item)
+		protected override double Evaluate (Creature creature)
 		{
 			Random random = new Random ();
-
-			Creature creature = Incubator.Incubate (item.Code);
-
+					
 			int i = 0;
+			double fitness;
 
-			while(creature.IsAlive && i < LifetimeIterations){
+			while (creature.IsAlive && i < LifetimeIterations) {
 				creature.Digest (random.Next (1000));	
 				i++;
 			}
-
-			double fitness;
-
-			if (creature.IsAlive) {
-				_alive +=1;
-				fitness = Math.Min (.9999999999d, .5d + (((double) creature.Energy / 1000d) / 2d));//.5->.99995 (or .99999999)
+				
+			if (creature.IsAlive) {	
+				fitness = Math.Min (.9999999999d, .5d + (((double)creature.Energy / 1000d) / 2d));//.5->.99995 (or .99999999)
 			} else {
-				_dead +=1;
+				fitness = (Math.Max (1d, (double)i) / (double)LifetimeIterations) / 2d;//.005 -> .5
+			}				
 
-				fitness = (Math.Max(1d, (double)i) / (double) _foodIteration) / 2d;//.005 -> .5
-			}
-
-			LastPopulation [item.Uid] = creature;
+			creature.Fitness = fitness;
 
 			return fitness;
 		}
 
-		#endregion
-
-		public void ResetForNextGeneration()
+		protected override void PrepareForNextGeneration ()
 		{
-			_alive = 0;
-			_dead = 0;
-			LastPopulation = new Dictionary<string, Creature> ();
 		}
-
-		public bool Success { get { return _alive > 0;}}
-
-		int _alive = 0;
-		int _dead = 0;
 	}
 }
