@@ -5,9 +5,16 @@ namespace ObviousCode.Alchemy.Creatures
 {
 	public class Creature
 	{
- 		public event EventHandler CreatureDied;
+		public event EventHandler CreatureDied;
 
-		public enum CausesOfDeath { StillAlive = 0, Forced, Starved, Popped }
+		public enum CausesOfDeath
+		{
+			StillAlive = 0,
+			Forced,
+			Starved,
+			Popped
+
+		}
 
 		public Creature (CreatureCreationContext context)
 		{
@@ -18,9 +25,11 @@ namespace ObviousCode.Alchemy.Creatures
 			Energy = context.Energy;
 			DigestionCost = context.CostOfDigestion;
 			EnzymeProcessCost = context.CostOfEnzymeProcessing;
+			Code = context.Code;
+			DiningMethod = context.DiningMethod;
 		}
 
-		public int Digest(int food)
+		public int Digest (int food)
 		{
 			int lastDigestion = -1;
 
@@ -38,11 +47,27 @@ namespace ObviousCode.Alchemy.Creatures
 
 				if ((food & enzyme) > 0) {
 
-					lastDigestion = food & enzyme;
+					if (DiningMethod == EatStrategy.ExtractFirst) {
 
-					food = food - lastDigestion;
+						lastDigestion = ExtractEnergy (food & enzyme);
+					
+						food = food - lastDigestion;
 
-					Eat (ExtractEnergy (lastDigestion));
+						Eat (lastDigestion);
+					} else if (DiningMethod == EatStrategy.BreakDownFirst) {
+						lastDigestion = food & enzyme;
+
+						food = food - lastDigestion;
+
+						Eat (ExtractEnergy (lastDigestion));
+					} else {
+						food = 0;
+
+						lastDigestion = food & enzyme;
+
+						Eat (ExtractEnergy (lastDigestion));
+					}
+
 
 					if (food == 0)
 						return 0;
@@ -54,7 +79,7 @@ namespace ObviousCode.Alchemy.Creatures
 
 		int ExtractEnergy (int lastDigestion)
 		{
-			return (int) Math.Ceiling ((double)lastDigestion * EnergyExtractionRatio);
+			return (int)Math.Ceiling ((double)lastDigestion * EnergyExtractionRatio);
 		}
 
 		void Eat (int lastDigestion)
@@ -81,14 +106,12 @@ namespace ObviousCode.Alchemy.Creatures
 		}
 
 		public int _energy;
-		public int Energy 
-		{ 
-			get 
-			{ 
+
+		public int Energy { 
+			get { 
 				return _energy; 
 			} 
-			private set
-			{ 
+			private set { 
 				_energy = value;
 				if (value < 0) {
 					Die (CausesOfDeath.Starved);
@@ -98,6 +121,11 @@ namespace ObviousCode.Alchemy.Creatures
 					Die (CausesOfDeath.Popped);
 				}
 			} 
+		}
+
+		public EatStrategy DiningMethod {
+			get;
+			set;
 		}
 
 		public int DigestionCost {
@@ -110,7 +138,7 @@ namespace ObviousCode.Alchemy.Creatures
 			private set;
 		}
 
-		public double EnergyExtractionRatio  {
+		public double EnergyExtractionRatio {
 			get;
 			private set;
 		}
@@ -124,6 +152,8 @@ namespace ObviousCode.Alchemy.Creatures
 			get;
 			set;
 		}
+
+		public byte[] Code { get; set; }
 	}
 }
 

@@ -19,6 +19,8 @@ public partial class MainWindow: Gtk.Window
 
 	bool _running = false;
 
+	int MaxLength = 8;
+
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
 		Build ();						
@@ -26,7 +28,9 @@ public partial class MainWindow: Gtk.Window
 		_process = new GenerationRunner ();
 
 		_process.ProcessesStopped += (sender, e) => {
-
+					
+			_reset.Sensitive = true;
+		
 			if (e.ReasonForStopping == ProcessingStoppedEventArgs.HaltReason.Exception) {
 				
 				Invoke (() => {
@@ -57,40 +61,60 @@ public partial class MainWindow: Gtk.Window
 		_resetWarning.Visible = false;
 	}
 
+	#region Generation Update
+
 	void HandleFitnessSelectionAvailable (object sender, AfterSelectionStateEventArgs e)
-	{
+	{		
 		Invoke (() => {
 			
+			UpdateSaveAndInjectButtons (true);
+
 			Individual<byte> i1 = e.Selection [0];
 			Individual<byte> i2 = e.Selection [1];
 
 			Creature c1 = e.LastPopulation [i1.Uid];
 			Creature c2 = e.LastPopulation [i2.Uid];
 
-			int MaxLength = 8;
+			UpdateCreature1Details (c1);
 
-			_fitness1.Text = Limit (c1.Fitness.ToString (), MaxLength);
-			_fitness2.Text = Limit (c2.Fitness.ToString (), MaxLength);
+			UpdateCreature2Details (c2);
+		});
+	}
 
-			_energy1.Text = c1.Energy.ToString ();
-			_state1.Text = c1.CauseOfDeath.ToString ();
-			_max1.Text = c1.MaximumEnergy.ToString ();
-			_dCost1.Text = c1.DigestionCost.ToString ();
-			_eCost1.Text = c1.EnzymeProcessCost.ToString ();
-			_enzC1.Text = c1.Enzymes.Count.ToString ();
-			_ex1.Text = Limit (c1.EnergyExtractionRatio.ToString (), MaxLength);
-			_fEnz1.Text = c1.Enzymes [0].ToString ();
-			_sEnz1.Text = c1.Enzymes.Count > 1 ? c1.Enzymes [1].ToString () : "N/A";
+	void UpdateCreature1Details (Creature creature)
+	{
+		_fitness1.Text = creature == null ? "" : Limit (creature.Fitness.ToString (), MaxLength);
+		_energy1.Text = creature == null ? "" : creature.Energy.ToString ();
+		_state1.Text = creature == null ? "" : creature.CauseOfDeath.ToString ();
+		_dining1.Text = creature == null ? "" : creature.DiningMethod.ToString ();
+		_max1.Text = creature == null ? "" : creature.MaximumEnergy.ToString ();
+		_dCost1.Text = creature == null ? "" : creature.DigestionCost.ToString ();
+		_eCost1.Text = creature == null ? "" : creature.EnzymeProcessCost.ToString ();
+		_enzC1.Text = creature == null ? "" : creature.Enzymes.Count.ToString ();
+		_ex1.Text = creature == null ? "" : Limit (creature.EnergyExtractionRatio.ToString (), MaxLength);
+		_fEnz1.Text = creature == null ? "" : creature.Enzymes [0].ToString ();
+		_sEnz1.Text = creature == null ? "" : creature.Enzymes.Count > 1 ? creature.Enzymes [1].ToString () : "N/A";
+	}
 
-			_energy2.Text = c2.Energy.ToString ();
-			_state2.Text = c2.CauseOfDeath.ToString ();
-			_max2.Text = c2.MaximumEnergy.ToString ();
-			_dCost2.Text = c2.DigestionCost.ToString ();
-			_eCost2.Text = c2.EnzymeProcessCost.ToString ();
-			_enzC2.Text = c2.Enzymes.Count.ToString ();
-			_ex2.Text = Limit (c2.EnergyExtractionRatio.ToString (), MaxLength);
-			_fEnz2.Text = c2.Enzymes [0].ToString ();
-			_sEnz2.Text = c2.Enzymes.Count > 1 ? c2.Enzymes [1].ToString () : "N/A";
+	void UpdateCreature2Details (Creature creature)
+	{
+		_fitness2.Text = creature == null ? "" : Limit (creature.Fitness.ToString (), MaxLength);
+		_energy2.Text = creature == null ? "" : creature.Energy.ToString ();
+		_state2.Text = creature == null ? "" : creature.CauseOfDeath.ToString ();
+		_dining2.Text = creature == null ? "" : creature.DiningMethod.ToString ();
+		_max2.Text = creature == null ? "" : creature.MaximumEnergy.ToString ();
+		_dCost2.Text = creature == null ? "" : creature.DigestionCost.ToString ();
+		_eCost2.Text = creature == null ? "" : creature.EnzymeProcessCost.ToString ();
+		_enzC2.Text = creature == null ? "" : creature.Enzymes.Count.ToString ();
+		_ex2.Text = creature == null ? "" : Limit (creature.EnergyExtractionRatio.ToString (), MaxLength);
+		_fEnz2.Text = creature == null ? "" : creature.Enzymes [0].ToString ();
+		_sEnz2.Text = creature == null ? "" : creature.Enzymes.Count > 1 ? creature.Enzymes [1].ToString () : "N/A";
+	}
+
+	void HandleNextGenerationAvailable (object sender, PopulationEventArgs e)
+	{
+		Invoke (() => {
+			_generationLabel.Text = e.Generation.ToString ();
 		});
 	}
 
@@ -102,12 +126,9 @@ public partial class MainWindow: Gtk.Window
 		return value;
 	}
 
-	void HandleNextGenerationAvailable (object sender, PopulationEventArgs e)
-	{
-		Invoke (() => {
-			_generationLabel.Text = e.Generation.ToString ();
-		});
-	}
+	#endregion
+
+	#region Start Stop
 
 	void StopProcess ()
 	{
@@ -128,8 +149,14 @@ public partial class MainWindow: Gtk.Window
 
 		_currentEvaluator.LifetimeIterations = (int)_lifetimeIterations.Value;
 
+		_reset.Sensitive = false;
+
 		_process.IterateGenerations (_currentEvaluator, (int)_generationsToRun.Value);
 	}
+
+	#endregion
+
+	#region Environments
 
 	void LoadEnvironments ()
 	{
@@ -158,6 +185,9 @@ public partial class MainWindow: Gtk.Window
 		if (_currentEvaluator != null) {
 			UnloadCurrentEvaluator ();
 		}
+
+		UpdateCreature1Details (null);
+		UpdateCreature2Details (null);
 
 		if (!string.IsNullOrEmpty ((_environments as ComboBox).ActiveText)) {
 			string request = ((_environments as ComboBox).ActiveText);
@@ -189,16 +219,16 @@ public partial class MainWindow: Gtk.Window
 		_action.Label = "Choose Environment";
 	}
 
+	#endregion
+
+	#region UI Events
+
 	protected void Action_Clicked (object sender, EventArgs e)
 	{
-		try {
-			if (_running) {
-				StopProcess ();
-			} else {
-				StartProcess ();
-			}
-		} catch (Exception ex) {
-
+		if (_running) {
+			StopProcess ();
+		} else {
+			StartProcess ();
 		}
 	}
 
@@ -208,14 +238,23 @@ public partial class MainWindow: Gtk.Window
 		a.RetVal = true;
 	}
 
-	protected void OnButton1Clicked (object sender, EventArgs e)
+	protected void OnResetClicked (object sender, EventArgs e)
 	{
+		UpdateSaveAndInjectButtons (false);
+
 		LoadCurrentEvaluator ();
 
 		_generationLabel.Text = "0";
 
 		_resetWarning.Visible = false;
 	}
+
+	protected void OnCloseClicked (object sender, EventArgs e)
+	{
+		Destroy ();
+	}
+
+	#endregion
 
 	public void Invoke (System.Action action)
 	{
@@ -225,9 +264,13 @@ public partial class MainWindow: Gtk.Window
 		}));
 	}
 
-	protected void OnButton5Clicked (object sender, EventArgs e)
+	void UpdateSaveAndInjectButtons (bool enable)
 	{
-		Destroy ();
+		_save1.Sensitive =
+		_save2.Sensitive =
+		_inject1.Sensitive =
+		_inject2.Sensitive =
+		enable;
 	}
 
 	protected void ShowResetWarning (object o, EventArgs args)

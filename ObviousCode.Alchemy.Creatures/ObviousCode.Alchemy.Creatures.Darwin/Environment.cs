@@ -50,7 +50,10 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 			};
 		}
 
-
+		protected void InsertCreature (byte[] code, int idx)
+		{
+			code.CopyTo (Engine.Population [idx].Code, 0);
+		}
 
 		public void ExecuteGeneration ()
 		{
