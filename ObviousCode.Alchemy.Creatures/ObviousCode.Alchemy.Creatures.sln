@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObviousCode.Alchemy.Creatur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObviousCode.Alchemy.Creatures.Darwin.Ui", "ObviousCode.Alchemy.Creatures.Darwin.Ui\ObviousCode.Alchemy.Creatures.Darwin.Ui.csproj", "{5ADB0B47-8239-4E76-9861-B690014F1A6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObviousCode.Alchemy.Creatures.DecisionProcessing", "ObviousCode.Alchemy.Creatures.DecisionProcessing\ObviousCode.Alchemy.Creatures.DecisionProcessing.csproj", "{7FE8E301-1574-4C8D-8A66-2E3580E6D856}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{5ADB0B47-8239-4E76-9861-B690014F1A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ADB0B47-8239-4E76-9861-B690014F1A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ADB0B47-8239-4E76-9861-B690014F1A6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE8E301-1574-4C8D-8A66-2E3580E6D856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE8E301-1574-4C8D-8A66-2E3580E6D856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE8E301-1574-4C8D-8A66-2E3580E6D856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE8E301-1574-4C8D-8A66-2E3580E6D856}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B6EA4346-DB1C-449D-8951-E19E76CDDBB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B6EA4346-DB1C-449D-8951-E19E76CDDBB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6EA4346-DB1C-449D-8951-E19E76CDDBB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,8 +37,5 @@ Global
 		{EF46E974-0F6E-47F7-A05C-FE4645A16988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF46E974-0F6E-47F7-A05C-FE4645A16988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF46E974-0F6E-47F7-A05C-FE4645A16988}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ObviousCode.Alchemy.Creatures.Darwin.Ui\ObviousCode.Alchemy.Creatures.Darwin.Ui.csproj
 	EndGlobalSection
 EndGlobal

@@ -56,6 +56,7 @@
     <Reference Include="Mono.Posix" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\ObviousCode.Alchemy\ObviousCode.Alchemy.Library\bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <Package>monodevelop</Package>
     </Reference>
     <Reference Include="ObviousCode.Alchemy.Extensions">
       <HintPath>..\..\ObviousCode.Alchemy\ObviousCode.Alchemy.Library\bin\Debug\ObviousCode.Alchemy.Extensions.dll</HintPath>
