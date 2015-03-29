@@ -1,34 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 {
-	public class Predicate
+	public abstract class Predicate
 	{
-		double? _value1;
-		double? _value2;
+		public Stack<PredicateValue> Stack { get; private set; }
 
-		public enum PredicateType { Comparison }
-		public PredicateType TypeOfPredicate { get; private set; }
-
-		public Predicate (PredicateType predicateType) 
+		protected Predicate () 
 		{
-			TypeOfPredicate = predicateType;
+			Stack = new Stack<PredicateValue> (2);
 		}
 
-		public int Push(int value)
+		public void Push(PredicateValue value)
 		{
-			Push ((double)value);
+			if (Stack.Count == 2)
+				throw new InvalidOperationException ("Stack Overflow");
+
+			Stack.Push (value);
 		}
 
-		public int Push(double value)
-		{
-			if (!_value1.HasValue)
-				_value1 = value;
-			else if (!_value2.HasValue)
-				_value2 = value;
-			else throw new StackOverflowException(
-				string.Format("Predicate {0} Stack is full");
-		}
+		public abstract bool GetValue();
 	}
 }
 
