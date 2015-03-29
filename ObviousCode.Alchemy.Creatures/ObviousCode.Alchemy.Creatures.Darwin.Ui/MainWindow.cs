@@ -30,6 +30,7 @@ public partial class MainWindow: Gtk.Window
 		_process.ProcessesStopped += (sender, e) => {
 					
 			_reset.Sensitive = true;
+			UpdateSaveAndInjectButtons (true);
 		
 			if (e.ReasonForStopping == ProcessingStoppedEventArgs.HaltReason.Exception) {
 				
@@ -63,26 +64,30 @@ public partial class MainWindow: Gtk.Window
 
 	#region Generation Update
 
+	List<Individual<byte>> _lastSelection;
+	Creature _lastFittest1;
+	Creature _lastFittest2;
+
 	void HandleFitnessSelectionAvailable (object sender, AfterSelectionStateEventArgs e)
 	{		
 		Invoke (() => {
 			
-			UpdateSaveAndInjectButtons (true);
-
 			Individual<byte> i1 = e.Selection [0];
 			Individual<byte> i2 = e.Selection [1];
 
-			Creature c1 = e.LastPopulation [i1.Uid];
-			Creature c2 = e.LastPopulation [i2.Uid];
+			_lastFittest1 = e.LastPopulation [i1.Uid];
+			_lastFittest2 = e.LastPopulation [i2.Uid];
 
-			UpdateCreature1Details (c1);
+			UpdateCreature1Details ();
 
-			UpdateCreature2Details (c2);
+			UpdateCreature2Details ();
 		});
 	}
 
-	void UpdateCreature1Details (Creature creature)
+	void UpdateCreature1Details ()
 	{
+		Creature creature = _lastFittest1;
+
 		_fitness1.Text = creature == null ? "" : Limit (creature.Fitness.ToString (), MaxLength);
 		_energy1.Text = creature == null ? "" : creature.Energy.ToString ();
 		_state1.Text = creature == null ? "" : creature.CauseOfDeath.ToString ();
@@ -96,8 +101,10 @@ public partial class MainWindow: Gtk.Window
 		_sEnz1.Text = creature == null ? "" : creature.Enzymes.Count > 1 ? creature.Enzymes [1].ToString () : "N/A";
 	}
 
-	void UpdateCreature2Details (Creature creature)
+	void UpdateCreature2Details ()
 	{
+		Creature creature = _lastFittest2;
+
 		_fitness2.Text = creature == null ? "" : Limit (creature.Fitness.ToString (), MaxLength);
 		_energy2.Text = creature == null ? "" : creature.Energy.ToString ();
 		_state2.Text = creature == null ? "" : creature.CauseOfDeath.ToString ();
@@ -186,8 +193,12 @@ public partial class MainWindow: Gtk.Window
 			UnloadCurrentEvaluator ();
 		}
 
-		UpdateCreature1Details (null);
-		UpdateCreature2Details (null);
+		_lastFittest1 = null;
+		_lastFittest2 = null;
+		_lastSelection = null;
+
+		UpdateCreature1Details ();
+		UpdateCreature2Details ();
 
 		if (!string.IsNullOrEmpty ((_environments as ComboBox).ActiveText)) {
 			string request = ((_environments as ComboBox).ActiveText);
@@ -223,8 +234,11 @@ public partial class MainWindow: Gtk.Window
 
 	#region UI Events
 
-	protected void Action_Clicked (object sender, EventArgs e)
+
+	protected void OnActionClicked (object sender, EventArgs e)
 	{
+		UpdateSaveAndInjectButtons (false);
+
 		if (_running) {
 			StopProcess ();
 		} else {
@@ -252,6 +266,26 @@ public partial class MainWindow: Gtk.Window
 	protected void OnCloseClicked (object sender, EventArgs e)
 	{
 		Destroy ();
+	}
+
+	protected void OnSave1Clicked (object sender, EventArgs e)
+	{
+		CreatureSaver.Save (_lastFittest1, "creature_dna");
+	}
+
+	protected void OnSave2Clicked (object sender, EventArgs e)
+	{
+		throw new NotImplementedException ();
+	}
+
+	protected void OnInject1Clicked (object sender, EventArgs e)
+	{
+		throw new NotImplementedException ();
+	}
+
+	protected void OnInject2Clicked (object sender, EventArgs e)
+	{
+		throw new NotImplementedException ();
 	}
 
 	#endregion

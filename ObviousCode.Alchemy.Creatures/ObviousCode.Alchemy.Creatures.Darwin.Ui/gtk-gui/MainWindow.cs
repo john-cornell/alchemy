@@ -1051,6 +1051,7 @@ public partial class MainWindow
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this._reset.Clicked += new global::System.EventHandler (this.OnResetClicked);
-		this._action.Clicked += new global::System.EventHandler (this.Action_Clicked);
+		this._save1.Clicked += new global::System.EventHandler (this.OnSave1Clicked);
+		this._action.Clicked += new global::System.EventHandler (this.OnActionClicked);
 	}
 }

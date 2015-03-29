@@ -7,20 +7,21 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 	{
 		public Stack<PredicateValue> Stack { get; private set; }
 
-		protected Predicate () 
+		protected Predicate ()
 		{
 			Stack = new Stack<PredicateValue> (2);
 		}
 
-		public void Push(PredicateValue value)
+		public void Push (PredicateValue value)
 		{
 			if (Stack.Count == 2)
-				throw new InvalidOperationException ("Stack Overflow");
+				throw new StackOverflowException (
+					string.Format ("Stackoverflow in Predicate: '{0}'", GetType ()));
 
 			Stack.Push (value);
 		}
 
-		public abstract bool GetValue();
+		public abstract bool GetValue ();
 	}
 }
 

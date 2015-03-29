@@ -1059,6 +1059,7 @@
                             <property name="Type">TextOnly</property>
                             <property name="Label" translatable="yes">Save</property>
                             <property name="UseUnderline">True</property>
+                            <signal name="Clicked" handler="OnSave1Clicked" />
                           </widget>
                           <packing>
                             <property name="TopAttach">1</property>
@@ -1482,7 +1483,7 @@
                     <property name="Type">TextOnly</property>
                     <property name="Label" translatable="yes">Go</property>
                     <property name="UseUnderline">True</property>
-                    <signal name="Clicked" handler="Action_Clicked" />
+                    <signal name="Clicked" handler="OnActionClicked" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>

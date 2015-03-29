@@ -12,30 +12,30 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		}
 
 		[Test]
-		public void WhenEqualsPredicateLoadedWithNonMatchingValues_AnswerShouldBeFalse()
+		public void WhenEqualsPredicateLoadedWithNonMatchingValues_AnswerShouldBeFalse ()
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 
-			equals.Push(new Value(3.5d));
-			equals.Push(new Value(6.5d));
+			equals.Push (new Value (3.5d));
+			equals.Push (new Value (6.5d));
 
 			Assert.IsFalse (equals.GetValue ());
 		}
 
 		[Test]
-		public void WhenEqualsPredicateLoadedWithMatchingValues_AnswerShouldBeFalse()
+		public void WhenEqualsPredicateLoadedWithMatchingValues_AnswerShouldBeFalse ()
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 
-			equals.Push(new Value(3.5d));
-			equals.Push(new Value(3.5d));
+			equals.Push (new Value (3.5d));
+			equals.Push (new Value (3.5d));
 
 			Assert.IsTrue (equals.GetValue ());
 		}
 
 		[Test]
-		[ExpectedException(typeof(InvalidOperationException))]
-		public void WhenNoValuesAddedToPredicate_Fails()
+		[ExpectedException (typeof(InvalidOperationException))]
+		public void WhenNoValuesAddedToPredicate_Fails ()
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 
@@ -43,8 +43,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		}
 
 		[Test]
-		[ExpectedException(typeof(InvalidOperationException))]
-		public void WhenOneValueAddedToPredicate_Fails()
+		[ExpectedException (typeof(InvalidOperationException))]
+		public void WhenOneValueAddedToPredicate_Fails ()
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 
@@ -54,8 +54,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		}
 
 		[Test]
-		[ExpectedException(typeof(InvalidOperationException))]
-		public void WhenThirdValueAddedToPredicate_Failes()
+		[ExpectedException (typeof(StackOverflowException))]
+		public void WhenThirdValueAddedToPredicate_Fails ()
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 

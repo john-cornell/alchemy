@@ -12,25 +12,25 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		}
 
 		[Test]
-		public void WhenGreaterThanPredicateLoadedWithGreaterValue_AnswerShouldBeTrue()
+		public void WhenGreaterThanPredicateLoadedWithGreaterValue_AnswerShouldBeTrue ()
 		{
-			GreaterThanPredicate lessThan = new GreaterThanPredicate ();
+			GreaterThanPredicate greaterThan = new GreaterThanPredicate ();
 
-			lessThan.Push(new Value(3.5d));
-			lessThan.Push(new Value(6.5d));
+			greaterThan.Push (new Value (3.5d));
+			greaterThan.Push (new Value (6.5d));
 
-			Assert.IsTrue (lessThan.GetValue ());
+			Assert.IsTrue (greaterThan.GetValue ());
 		}
 
 		[Test]
-		public void WhenGreaterThanPredicateLoadedWithLessThanValue_AnswerShouldBeFalse()
+		public void WhenGreaterThanPredicateLoadedWithLessThanValue_AnswerShouldBeFalse ()
 		{
-			GreaterThanPredicate lessThan = new GreaterThanPredicate ();
+			GreaterThanPredicate greaterThan = new GreaterThanPredicate ();
 
-			lessThan.Push(new Value(6.5d));
-			lessThan.Push(new Value(3.5d));
+			greaterThan.Push (new Value (6.5d));
+			greaterThan.Push (new Value (3.5d));
 
-			Assert.IsFalse (lessThan.GetValue ());
+			Assert.IsFalse (greaterThan.GetValue ());
 		}
 	}
 }
