@@ -41,6 +41,7 @@
     <Compile Include="Predicates\GreaterThanPredicate.cs" />
     <Compile Include="TruePredicate.cs" />
     <Compile Include="Predicates\FalsePredicate.cs" />
+    <Compile Include="Operators\AdditionOperator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

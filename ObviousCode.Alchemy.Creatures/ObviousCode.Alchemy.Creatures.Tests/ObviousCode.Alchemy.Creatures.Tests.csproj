@@ -45,6 +45,8 @@
     <Compile Include="Asynch.cs" />
     <Compile Include="EqualsPredicateTests.cs" />
     <Compile Include="LessThanPredicateTests.cs" />
+    <Compile Include="GreaterThanPredicateTests.cs" />
+    <Compile Include="AdditionOperatorTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
