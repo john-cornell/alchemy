@@ -39,14 +39,21 @@
     <Compile Include="Operators\OperatorValue.cs" />
     <Compile Include="Predicates\LessThanPredicate.cs" />
     <Compile Include="Predicates\GreaterThanPredicate.cs" />
-    <Compile Include="TruePredicate.cs" />
     <Compile Include="Predicates\FalsePredicate.cs" />
     <Compile Include="Operators\AdditionOperator.cs" />
+    <Compile Include="Operators\SubtractionOperator.cs" />
+    <Compile Include="Operators\DivisionOperator.cs" />
+    <Compile Include="Operators\MultiplicationOperator.cs" />
+    <Compile Include="Predicates\TruePredicate.cs" />
+    <Compile Include="Operators\Values.cs" />
+    <Compile Include="Predicates\PredicateProvider.cs" />
+    <Compile Include="Decisions\Decisions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Predicates\" />
     <Folder Include="Operators\" />
     <Folder Include="Value\" />
+    <Folder Include="Decisions\" />
   </ItemGroup>
 </Project>

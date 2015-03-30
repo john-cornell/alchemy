@@ -16,10 +16,10 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			AdditionOperator addition = new AdditionOperator ();
 
-			addition.Push (new Value (10d));
-			addition.Push (new Value (5.5d));
+			addition.Push (new Value (10m));
+			addition.Push (new Value (5.5m));
 
-			Assert.AreEqual (15.5d, addition.GetValue ());
+			Assert.AreEqual (15.5m, addition.GetValue ());
 		}
 
 		[Test]
@@ -29,20 +29,20 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			AdditionOperator level1a_1 = new AdditionOperator ();
 			AdditionOperator level1a_2 = new AdditionOperator ();
 
-			level1a_1.Push (new Value (14.4d));
-			level1a_1.Push (new Value (-4.4d));
+			level1a_1.Push (new Value (14.4m));
+			level1a_1.Push (new Value (-4.4m));
 
-			level1a_2.Push (new Value (15.2d));
-			level1a_2.Push (new Value (4.8));
+			level1a_2.Push (new Value (15.2m));
+			level1a_2.Push (new Value (4.8m));
 
 			AdditionOperator level1b_1 = new AdditionOperator ();
 			AdditionOperator level1b_2 = new AdditionOperator ();
 
-			level1b_1.Push (new Value (7.3d));
-			level1b_1.Push (new Value (2.7d));
+			level1b_1.Push (new Value (7.3m));
+			level1b_1.Push (new Value (2.7m));
 
-			level1b_2.Push (new Value (9d));
-			level1b_2.Push (new Value (1d));
+			level1b_2.Push (new Value (9m));
+			level1b_2.Push (new Value (1m));
 
 			AdditionOperator level2a = new AdditionOperator ();
 			AdditionOperator level2b = new AdditionOperator ();
@@ -66,20 +66,20 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			AdditionOperator operator1 = new AdditionOperator ();
 
-			operator1.Push (new Value (10d));
-			operator1.Push (new Value (5.5d));
+			operator1.Push (new Value (10m));
+			operator1.Push (new Value (5.5m));
 
 			AdditionOperator operator2 = new AdditionOperator ();
 
-			operator2.Push (new Value (12.2d));
-			operator2.Push (new Value (4.5d));
+			operator2.Push (new Value (12.2m));
+			operator2.Push (new Value (4.5m));
 
 			AdditionOperator output = new AdditionOperator ();
 
 			output.Push (operator1);
 			output.Push (operator2);
 
-			Assert.AreEqual (32.2d, output.GetValue ());
+			Assert.AreEqual (32.2m, output.GetValue ());
 		}
 
 		[Test]
@@ -87,15 +87,15 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			AdditionOperator operatorValue = new AdditionOperator ();
 
-			operatorValue.Push (new Value (10d));
-			operatorValue.Push (new Value (5.5d));
+			operatorValue.Push (new Value (10m));
+			operatorValue.Push (new Value (5.5m));
 
 			AdditionOperator output = new AdditionOperator ();
 
 			output.Push (operatorValue);
-			output.Push (new Value (4.5d));
+			output.Push (new Value (4.5m));
 
-			Assert.AreEqual (20d, output.GetValue ());
+			Assert.AreEqual (20m, output.GetValue ());
 		}
 	}
 }

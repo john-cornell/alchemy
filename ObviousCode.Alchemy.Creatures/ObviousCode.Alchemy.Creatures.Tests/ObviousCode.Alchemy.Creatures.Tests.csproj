@@ -47,6 +47,11 @@
     <Compile Include="LessThanPredicateTests.cs" />
     <Compile Include="GreaterThanPredicateTests.cs" />
     <Compile Include="AdditionOperatorTests.cs" />
+    <Compile Include="SubtractionOperatorTests.cs" />
+    <Compile Include="DivisionOperatorTests.cs" />
+    <Compile Include="MultiplicationOperatorTests.cs" />
+    <Compile Include="RndTests.cs" />
+    <Compile Include="DecisionTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

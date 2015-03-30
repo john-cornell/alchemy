@@ -7,6 +7,8 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 	{
 		public Stack<PredicateValue> Stack { get; private set; }
 
+		public int Seed { get; set; }
+
 		protected Predicate ()
 		{
 			Stack = new Stack<PredicateValue> (2);

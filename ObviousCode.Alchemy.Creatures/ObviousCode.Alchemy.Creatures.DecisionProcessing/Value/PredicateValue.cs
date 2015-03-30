@@ -8,8 +8,8 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		{
 			
 		}
-			
-		public abstract double GetValue ();
+
+		public abstract decimal GetValue ();
 	}
 }
 

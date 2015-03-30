@@ -4,14 +4,14 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 {
 	public class Value : PredicateValue
 	{
-		double _value;
+		decimal _value;
 
-		public Value (double value)
+		public Value (decimal value)
 		{
 			_value = value;
 		}
 
-		public override double GetValue ()
+		public override decimal GetValue ()
 		{
 			return _value;
 		}

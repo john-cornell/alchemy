@@ -4,15 +4,10 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 {
 	public class AdditionOperator : OperatorValue
 	{
-		public AdditionOperator ()
-		{
-		}
-
-		public override double GetValue ()
+		public override decimal GetValue ()
 		{
 			return Stack.Pop ().GetValue () + Stack.Pop ().GetValue ();
 		}
-
 	}
 }
 
