@@ -29,6 +29,12 @@ namespace ObviousCode.Alchemy.Creatures
 
 		public byte[] Code { get; set; }
 
+		public int DecisionPredicateIndex_Eat { get; set; }
+
+		public int DecisionPredicateCount_Eat { get; set; }
+
+		public byte DecisionSeed_Eat { get; set; }
+
 		public CreatureCreationContext ()
 		{
 			Enzymes = new List<byte> ();
@@ -41,6 +47,10 @@ namespace ObviousCode.Alchemy.Creatures
 			EnergyExtractionRatio = .1d;
 
 			DiningMethod = EatStrategy.BreakDownFirst;
+
+			DecisionSeed_Eat = 1;
+			DecisionPredicateCount_Eat = 1;
+			DecisionPredicateIndex_Eat = 1;
 
 			Code = new byte[] { };
 		}

@@ -4,6 +4,7 @@ namespace ObviousCode.Alchemy.Creatures
 {
 	public static class Incubator
 	{
+		//Consider only set position as seed for position randomiser
 		public static int StartEnergyPosition = 0;
 		public static int MaxEnergyPosition = 1;
 		public static int EnergyExtractionRationPosition = 2;
@@ -13,8 +14,12 @@ namespace ObviousCode.Alchemy.Creatures
 
 		public static int DiningMethodPosition = 5;
 
-		public static int LengthOfEnzymeChainPosition = 6;
-		public static int StartOfEnzymeChainPosition = 7;
+		public static int DecisionSeedPosition_Eat = 6;
+		public static int DecisionPredicateCountPosition_Eat = 7;
+		public static int DecisionPredicateIndexPosition_Eat = 8;
+
+		public static int LengthOfEnzymeChainPosition = 9;
+		public static int StartOfEnzymeChainPosition = 10;
 
 		public static Creature Incubate (byte[] genes)
 		{
@@ -38,6 +43,10 @@ namespace ObviousCode.Alchemy.Creatures
 			int lengthOfEnzymeChain = Math.Max ((byte)1, genes [genes [LengthOfEnzymeChainPosition] % genes.Length]);
 			int startOfEnzymeChainPosition = genes [genes [StartOfEnzymeChainPosition] % genes.Length];
 
+			int decisionSeed_Eat = genes [genes [DecisionSeedPosition_Eat] % genes.Length];
+			int decisionPredicateIndex_Eat = genes [genes [DecisionPredicateIndexPosition_Eat] % genes.Length];
+			int decisionPredicateCount_Eat = genes [genes [DecisionPredicateCountPosition_Eat] % genes.Length];
+
 			EatStrategy diningMethod = (EatStrategy)(genes [genes [DiningMethodPosition] % genes.Length]
 			                           % Enum.GetValues (typeof(EatStrategy)).Length);
 
@@ -46,6 +55,10 @@ namespace ObviousCode.Alchemy.Creatures
 			context.Energy = startingEnergy;
 			context.EnergyMaximum = maxEnergy;
 			context.EnergyExtractionRatio = energyExtractionRatio;
+
+			context.DecisionSeed_Eat = (byte)decisionSeed_Eat;
+			context.DecisionPredicateCount_Eat = decisionPredicateCount_Eat;
+			context.DecisionPredicateIndex_Eat = decisionPredicateIndex_Eat;
 
 			context.DiningMethod = diningMethod;
 

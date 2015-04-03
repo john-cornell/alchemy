@@ -36,4 +36,10 @@
     <Compile Include="Incubator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\ObviousCode.Alchemy.Creatures.DecisionProcessing\ObviousCode.Alchemy.Creatures.DecisionProcessing.csproj">
+      <Project>{7FE8E301-1574-4C8D-8A66-2E3580E6D856}</Project>
+      <Name>ObviousCode.Alchemy.Creatures.DecisionProcessing</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

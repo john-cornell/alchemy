@@ -5,25 +5,29 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 {
 	public class Values
 	{
-		List<PredicateValue> _constantValues;
-		List<PredicateValue> _transientValues;
+		const double OperatorChance = .5d;
+
+		List<Value> _constantValues;
+		List<Value> _transientValues;
 
 		public Values ()
 		{
-			_constantValues = new List<PredicateValue> ();
-			_transientValues = new List<PredicateValue> ();
+			_constantValues = new List<Value> ();
+			_transientValues = new List<Value> ();
 		}
 
-		public PredicateValue GetValue (int index)
-		{
-			List<PredicateValue> available = new List<PredicateValue> (
-				                                 _constantValues);
+		public PredicateValue GetValue (Random random)
+		{			
+			List<Value> available = new List<Value> (_constantValues);
 
 			available.AddRange (_transientValues);
+		
+			if (available.Count == 0)
+				throw new InvalidOperationException ("No values are available");
 
-			index = Math.Abs (index) % available.Count;
+			ValueProvider provider = new ValueProvider ();
 
-			return available [index];
+			return provider.GetValue (available, random, OperatorChance);
 		}
 
 		public void ClearTransientValues ()
@@ -31,12 +35,12 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			_transientValues.Clear ();
 		}
 
-		public void AddConstant (PredicateValue value)
+		public void AddConstant (Value value)
 		{
-			_constantValues.AddRange (_transientValues);
+			_constantValues.Add (value);
 		}
 
-		public void AddTransient (PredicateValue value)
+		public void AddTransient (Value value)
 		{			
 			_transientValues.Add (value);
 		}

@@ -14,31 +14,25 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 
 		Random _random;
 		Values _values;
-		int _cursor;
 
 		public List<Predicate> DecisionProviders { get; private set; }
 
 		byte[] _code;
 
-		public Decisions (byte[] code, byte seed, int decisionStartPosition)
+		public Decisions (byte[] code, byte seed, int predicateCount)
 		{
 			_random = new Random ((int)seed);
 			_values = new Values ();
-			_cursor = decisionStartPosition % code.Length;
 			_code = code;
 
 			DecisionProviders = new List<Predicate> ();
 
-			LoadPredicates ();
+			LoadPredicates (predicateCount);
 		}
 
-		void LoadPredicates ()
+		void LoadPredicates (int predicateCount)
 		{
-			int positionOfPredicateCount = _code [_cursor] % _code.Length;
-
-			IncrementCursor ();
-
-			for (int i = 0; i < _code [positionOfPredicateCount]; i++) {
+			for (int i = 0; i < predicateCount; i++) {
 				
 				Predicate predicate = PredicateProvider.GetPredicate (_random.Next ());
 				predicate.Seed = _random.Next ();
@@ -49,28 +43,33 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 
 		public Outcome GetDecision (int predicateIndex)
 		{
+			Predicate predicate = null;
+
 			try {
 						
-				Predicate predicate = DecisionProviders [predicateIndex % DecisionProviders.Count];
+				predicate = DecisionProviders [predicateIndex % DecisionProviders.Count];						
 
 				Random random = new Random (predicate.Seed);
-
-				predicate.Push (_values.GetValue (random.Next ()));
-				predicate.Push (_values.GetValue (random.Next ()));
+				
+				predicate.Push (_values.GetValue (random));
+				predicate.Push (_values.GetValue (random));
 
 				return predicate.GetValue () ? Outcome.True : Outcome.False;
 
-			} catch {
+			} catch (Exception e) {
 				return Outcome.Die;
+			} finally {		
+				if (predicate != null)
+					predicate.Stack.Clear ();
 			}
 		}
 
-		public void LoadConstantValue (PredicateValue value)
+		public void LoadConstantValue (Value value)
 		{
 			_values.AddConstant (value);
 		}
 
-		public void LoadTransientValue (PredicateValue value)
+		public void LoadTransientValue (Value value)
 		{
 			_values.AddTransient (value);
 		}
@@ -79,12 +78,6 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		{
 			_values.ClearTransientValues ();
 		}
-
-		void IncrementCursor ()
-		{
-			_cursor = (_cursor + 1) % _code.Length;
-		}
-
 	}
 }
 

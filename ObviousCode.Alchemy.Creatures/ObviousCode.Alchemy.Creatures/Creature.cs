@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ObviousCode.Alchemy.Creatures.DecisionProcessing;
 
 namespace ObviousCode.Alchemy.Creatures
 {
@@ -12,8 +13,8 @@ namespace ObviousCode.Alchemy.Creatures
 			StillAlive = 0,
 			Forced,
 			Starved,
-			Popped
-
+			Popped,
+			ExceptionInDecision
 		}
 
 		public Creature (CreatureCreationContext context)
@@ -27,13 +28,28 @@ namespace ObviousCode.Alchemy.Creatures
 			EnzymeProcessCost = context.CostOfEnzymeProcessing;
 			Code = context.Code;
 			DiningMethod = context.DiningMethod;
+			DecisionPredicateCount_Eat = context.DecisionPredicateCount_Eat;
+			DecisionPredicateIndex_Eat = context.DecisionPredicateIndex_Eat;
+			DecisionSeed_Eat = context.DecisionSeed_Eat;
+
+			_eatDecisions = new Decisions (Code, DecisionSeed_Eat, DecisionPredicateCount_Eat);
 		}
 
 		public int Digest (int food)
-		{
-			int lastDigestion = -1;
+		{						
+			int lastDigestion = -1;		
 
+			//Temporarilly before decision, otherwise no evolutionary pressure to eat
 			Energy -= DigestionCost;
+
+			Decisions.Outcome eatDecision = ThinkAboutEating ();
+
+			if (eatDecision == Decisions.Outcome.False)
+				return food;
+			if (eatDecision == Decisions.Outcome.Die) {
+				Die (CausesOfDeath.ExceptionInDecision);
+				return food;
+			}
 
 			if (!IsAlive)
 				return food;
@@ -122,6 +138,23 @@ namespace ObviousCode.Alchemy.Creatures
 				}
 			} 
 		}
+
+		private Decisions.Outcome ThinkAboutEating ()
+		{			 
+			_eatDecisions.ClearTransientValues ();
+
+			_eatDecisions.LoadTransientValue (new Value ((decimal)Energy));
+
+			return _eatDecisions.GetDecision (DecisionPredicateIndex_Eat);
+		}
+
+		private Decisions _eatDecisions;
+
+		public int DecisionPredicateIndex_Eat { get; private set; }
+
+		public int DecisionPredicateCount_Eat { get; private set; }
+
+		public byte DecisionSeed_Eat { get; private set; }
 
 		public EatStrategy DiningMethod {
 			get;
