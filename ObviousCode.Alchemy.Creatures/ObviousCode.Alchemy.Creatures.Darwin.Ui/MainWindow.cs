@@ -10,7 +10,7 @@ using ObviousCode.Alchemy.Creatures.Darwin.Ui;
 using ObviousCode.Alchemy.Creatures;
 using ObviousCode.Alchemy.Library.Populous;
 
-public partial class MainWindow: Gtk.Window
+public sealed partial class MainWindow: Gtk.Window
 {
 	GenerationRunner _process;
 	Evaluator _currentEvaluator;
@@ -19,7 +19,7 @@ public partial class MainWindow: Gtk.Window
 
 	bool _running = false;
 
-	int MaxLength = 8;
+	const int MaxLength = 8;
 
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
@@ -99,6 +99,7 @@ public partial class MainWindow: Gtk.Window
 		_ex1.Text = creature == null ? "" : Limit (creature.EnergyExtractionRatio.ToString (), MaxLength);
 		_fEnz1.Text = creature == null ? "" : creature.Enzymes [0].ToString ();
 		_sEnz1.Text = creature == null ? "" : creature.Enzymes.Count > 1 ? creature.Enzymes [1].ToString () : "N/A";
+		_ep1.Text = creature == null ? "" : creature.EatDecision.Type.ToString();
 	}
 
 	void UpdateCreature2Details ()
@@ -116,6 +117,7 @@ public partial class MainWindow: Gtk.Window
 		_ex2.Text = creature == null ? "" : Limit (creature.EnergyExtractionRatio.ToString (), MaxLength);
 		_fEnz2.Text = creature == null ? "" : creature.Enzymes [0].ToString ();
 		_sEnz2.Text = creature == null ? "" : creature.Enzymes.Count > 1 ? creature.Enzymes [1].ToString () : "N/A";
+		_ep2.Text = creature == null ? "" : creature.EatDecision.Type.ToString();
 	}
 
 	void HandleNextGenerationAvailable (object sender, PopulationEventArgs e)

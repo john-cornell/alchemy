@@ -148,7 +148,9 @@ namespace ObviousCode.Alchemy.Creatures
 			return _eatDecisions.GetDecision (DecisionPredicateIndex_Eat);
 		}
 
-		private Decisions _eatDecisions;
+		private readonly Decisions _eatDecisions;
+
+		public Predicate EatDecision { get { return _eatDecisions.DecisionProviders [DecisionPredicateIndex_Eat % _eatDecisions.DecisionProviders.Count]; } }
 
 		public int DecisionPredicateIndex_Eat { get; private set; }
 

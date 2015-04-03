@@ -9,6 +9,14 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			// Analysis disable once EqualExpressionComparison
 			return Stack.Pop ().GetValue () > Stack.Pop ().GetValue ();
 		}
+
+
+
+		public override PredicateType Type {
+			get {
+				return Predicate.PredicateType.GT;
+				}
+		}
 	}
 }
 

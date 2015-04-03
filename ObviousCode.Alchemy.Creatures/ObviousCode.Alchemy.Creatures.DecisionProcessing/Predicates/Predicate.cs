@@ -5,6 +5,8 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 {
 	public abstract class Predicate
 	{
+		public enum PredicateType { Equals, False, GT, LT, True }
+
 		public Stack<PredicateValue> Stack { get; private set; }
 
 		public int Seed { get; set; }
@@ -23,6 +25,7 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			Stack.Push (value);
 		}
 
+		public abstract PredicateType Type {get;}
 		public abstract bool GetValue ();
 	}
 }
