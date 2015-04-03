@@ -13,11 +13,11 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			Random internalRandom = new Random (seed);
 
-			byte[] code = Array.CreateInstance (typeof(byte), 1000) as byte[];
+			byte[] code = new byte[1000] as byte[];
 
 			internalRandom.NextBytes (code);
 
-			Decisions decisions = new Decisions (code, (byte)internalRandom.Next (255), internalRandom.Next (code.Length));
+			Decisions decisions = new Decisions ((byte)internalRandom.Next (255), internalRandom.Next (code.Length));
 
 			Enumerable.Range (2, internalRandom.Next (20))
 				.ToList ()

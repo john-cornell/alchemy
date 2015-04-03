@@ -13,17 +13,15 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		}
 
 		Random _random;
-		Values _values;
+		readonly Values _values;
 
 		public List<Predicate> DecisionProviders { get; private set; }
 
-		byte[] _code;
-
-		public Decisions (byte[] code, byte seed, int predicateCount)
+		public Decisions (byte seed, int predicateCount)
 		{
 			_random = new Random ((int)seed);
 			_values = new Values ();
-			_code = code;
+
 
 			DecisionProviders = new List<Predicate> ();
 

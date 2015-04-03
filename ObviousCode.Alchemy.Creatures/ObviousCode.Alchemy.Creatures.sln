@@ -38,7 +38,4 @@ Global
 		{EF46E974-0F6E-47F7-A05C-FE4645A16988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF46E974-0F6E-47F7-A05C-FE4645A16988}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = ObviousCode.Alchemy.Creatures.Darwin.Ui\ObviousCode.Alchemy.Creatures.Darwin.Ui.csproj
-	EndGlobalSection
 EndGlobal

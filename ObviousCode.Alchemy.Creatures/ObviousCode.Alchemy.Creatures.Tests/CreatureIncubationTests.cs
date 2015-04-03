@@ -171,7 +171,7 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			genes [Incubator.LengthOfEnzymeChainPosition] = positionOfLength;
 			genes [positionOfLength % genomeLength] = 2;//2 enzymes
 
-			int startOfEnzymeChain = genes [genes [Incubator.StartOfEnzymeChainPosition] % genomeLength];
+			int startOfEnzymeChain = genes [genes [Incubator.StartOfEnzymeChainPosition % genomeLength] % genomeLength];
 
 			byte enzyme0 = genes [genes [startOfEnzymeChain % genomeLength] % genomeLength];
 			byte enzyme1 = genes [genes [(startOfEnzymeChain + 1) % genomeLength] % genomeLength];

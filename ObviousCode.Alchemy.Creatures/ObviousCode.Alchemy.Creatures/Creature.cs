@@ -32,7 +32,7 @@ namespace ObviousCode.Alchemy.Creatures
 			DecisionPredicateIndex_Eat = context.DecisionPredicateIndex_Eat;
 			DecisionSeed_Eat = context.DecisionSeed_Eat;
 
-			_eatDecisions = new Decisions (Code, DecisionSeed_Eat, DecisionPredicateCount_Eat);
+			_eatDecisions = new Decisions (DecisionSeed_Eat, DecisionPredicateCount_Eat);
 		}
 
 		public int Digest (int food)

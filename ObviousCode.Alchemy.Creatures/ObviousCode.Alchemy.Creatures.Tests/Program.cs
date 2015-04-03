@@ -6,9 +6,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
-
-
+			var tests = new CreatureIncubationTests ();
+			tests.WhenCreatureContextCreated_ShortGenome_EnzymesShouldBeCorrect ();
 		}
 	}
 }

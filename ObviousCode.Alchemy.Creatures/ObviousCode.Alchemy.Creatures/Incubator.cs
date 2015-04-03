@@ -33,21 +33,21 @@ namespace ObviousCode.Alchemy.Creatures
 			if (genes.Length < 6)
 				throw new InvalidOperationException ("Genome should be 6 long or greater");			
 
-			int startingEnergy = genes [genes [StartEnergyPosition] % genes.Length];
-			int maxEnergy = genes [genes [MaxEnergyPosition] % genes.Length];
+			int startingEnergy = genes [genes [StartEnergyPosition % genes.Length] % genes.Length];
+			int maxEnergy = genes [genes [MaxEnergyPosition % genes.Length] % genes.Length];
 
-			double energyExtractionRatio = (double)genes [genes [EnergyExtractionRationPosition] % genes.Length] / 255;
+			double energyExtractionRatio = (double)genes [genes [EnergyExtractionRationPosition % genes.Length] % genes.Length] / 255;
 
-			int costOfDigestion = Math.Max ((byte)1, genes [genes [CostOfDigestionRatioPosition] % genes.Length]);
-			int costOfEnzymeProcessing = Math.Max ((byte)1, genes [genes [CostOfEnzymeProcessingPosition] % genes.Length]);
-			int lengthOfEnzymeChain = Math.Max ((byte)1, genes [genes [LengthOfEnzymeChainPosition] % genes.Length]);
-			int startOfEnzymeChainPosition = genes [genes [StartOfEnzymeChainPosition] % genes.Length];
+			int costOfDigestion = Math.Max ((byte)1, genes [genes [CostOfDigestionRatioPosition % genes.Length] % genes.Length]);
+			int costOfEnzymeProcessing = Math.Max ((byte)1, genes [genes [CostOfEnzymeProcessingPosition % genes.Length] % genes.Length]);
+			int lengthOfEnzymeChain = Math.Max ((byte)1, genes [genes [LengthOfEnzymeChainPosition % genes.Length] % genes.Length]);
+			int startOfEnzymeChainPosition = genes [genes [StartOfEnzymeChainPosition % genes.Length] % genes.Length];
 
-			int decisionSeed_Eat = genes [genes [DecisionSeedPosition_Eat] % genes.Length];
-			int decisionPredicateIndex_Eat = genes [genes [DecisionPredicateIndexPosition_Eat] % genes.Length];
-			int decisionPredicateCount_Eat = genes [genes [DecisionPredicateCountPosition_Eat] % genes.Length];
+			int decisionSeed_Eat = genes [genes [DecisionSeedPosition_Eat % genes.Length] % genes.Length];
+			int decisionPredicateIndex_Eat = genes [genes [DecisionPredicateIndexPosition_Eat % genes.Length] % genes.Length];
+			int decisionPredicateCount_Eat = genes [genes [DecisionPredicateCountPosition_Eat % genes.Length] % genes.Length];
 
-			EatStrategy diningMethod = (EatStrategy)(genes [genes [DiningMethodPosition] % genes.Length]
+			EatStrategy diningMethod = (EatStrategy)(genes [genes [DiningMethodPosition % genes.Length] % genes.Length]
 			                           % Enum.GetValues (typeof(EatStrategy)).Length);
 
 			CreatureCreationContext context = new CreatureCreationContext ();
