@@ -1008,6 +1008,7 @@
                             <property name="Type">TextOnly</property>
                             <property name="Label" translatable="yes">Inject</property>
                             <property name="UseUnderline">True</property>
+                            <signal name="Clicked" handler="OnInject1Clicked" />
                           </widget>
                           <packing>
                             <property name="TopAttach">1</property>

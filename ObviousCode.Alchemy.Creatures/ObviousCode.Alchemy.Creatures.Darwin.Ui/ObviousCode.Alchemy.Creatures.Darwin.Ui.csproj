@@ -78,6 +78,7 @@
     <Compile Include="Processing\GenerationRunner.cs" />
     <Compile Include="EventArgs\ProcessingStoppedEventArgs.cs" />
     <Compile Include="CreatureSaver.cs" />
+    <Compile Include="CreatureLoader.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

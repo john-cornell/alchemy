@@ -15,7 +15,7 @@ namespace ObviousCode.Alchemy.Creatures.Darwin.Ui
 					"Save", ResponseType.Accept,
 					"Cancel", ResponseType.Cancel);
 
-			filechooser.SetFilename ("./" + suggestedName);
+			filechooser.CurrentName = suggestedName;
 
 			if (filechooser.Run () == (int)ResponseType.Accept) {
 				File.WriteAllBytes (filechooser.Filename, creature.Code);

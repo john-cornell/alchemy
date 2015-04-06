@@ -210,9 +210,7 @@ public sealed partial class MainWindow: Gtk.Window
 				int population = (int)_population.Value;
 				int genomeLength = (int)_genomeLength.Value;
 
-				_currentEvaluator = new Environment_RandomNumber ((e) => {
-					e.Setup (population, genomeLength);
-				});						
+				_currentEvaluator = new Environment_RandomNumber ((e) => e.Setup (population, genomeLength));						
 			}
 		}
 
@@ -272,22 +270,40 @@ public sealed partial class MainWindow: Gtk.Window
 
 	protected void OnSave1Clicked (object sender, EventArgs e)
 	{
-		CreatureSaver.Save (_lastFittest1, "creature_dna");
+		CreatureSaver.Save (_lastFittest1, "creature.dna");
 	}
 
 	protected void OnSave2Clicked (object sender, EventArgs e)
 	{
-		throw new NotImplementedException ();
+		CreatureSaver.Save (_lastFittest2, "creature.dna");
 	}
 
 	protected void OnInject1Clicked (object sender, EventArgs e)
 	{
-		throw new NotImplementedException ();
+		byte[] dna = CreatureLoader.Load ();
+
+		if (dna != null) {
+
+			_currentEvaluator.RequestInjection (dna, 0);
+
+			_lastFittest1 = Incubator.Incubate (dna);
+
+			UpdateCreature1Details ();
+		}
 	}
 
 	protected void OnInject2Clicked (object sender, EventArgs e)
 	{
-		throw new NotImplementedException ();
+		byte[] dna = CreatureLoader.Load ();
+
+		if (dna != null) {
+
+			_currentEvaluator.RequestInjection (dna, 1);
+
+			_lastFittest2 = Incubator.Incubate (dna);
+
+			UpdateCreature2Details ();
+		}
 	}
 
 	#endregion

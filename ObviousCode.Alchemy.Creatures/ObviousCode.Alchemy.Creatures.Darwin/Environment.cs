@@ -13,12 +13,12 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 		public event EventHandler<AfterSelectionStateEventArgs> AfterSelectionStateAvailable;
 		public event EventHandler<PopulationEventArgs> NextGenerationAvailable;
 
-		public Environment (string label) : this (label, null)
+		protected Environment (string label) : this (label, null)
 		{
 
 		}
 
-		public Environment (string label, Action<Engine<byte>> setup)
+		protected Environment (string label, Action<Engine<byte>> setup)
 		{
 			Label = label;
 			LifetimeIterations = 1000;
@@ -40,7 +40,7 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 				if (AfterSelectionStateAvailable != null) {
 					var args = new AfterSelectionStateEventArgs ();
 					
-					e.Selection.ForEach (s => args.Selection.Add (s));
+					e.Selection.ForEach (args.Selection.Add);
 
 					LastPopulation						
 						.ForEach (kvp => args.LastPopulation [kvp.Key] = kvp.Value);
@@ -85,6 +85,11 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 		}
 
 		protected abstract double Evaluate (Creature creature);
+
+		public void RequestInjection (byte[] dna, int index)
+		{
+			Engine.RequestInjection (dna, index);
+		}
 
 		public string Label { get; private set; }
 
