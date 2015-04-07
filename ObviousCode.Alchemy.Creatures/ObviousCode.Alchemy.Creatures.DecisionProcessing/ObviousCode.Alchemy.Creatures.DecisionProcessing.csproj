@@ -48,6 +48,7 @@
     <Compile Include="Predicates\PredicateProvider.cs" />
     <Compile Include="Decisions\Decisions.cs" />
     <Compile Include="Value\ValueProvider.cs" />
+    <Compile Include="StackArray.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

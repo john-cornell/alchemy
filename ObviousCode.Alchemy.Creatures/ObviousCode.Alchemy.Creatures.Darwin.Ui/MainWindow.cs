@@ -64,7 +64,6 @@ public sealed partial class MainWindow: Gtk.Window
 
 	#region Generation Update
 
-	List<Individual<byte>> _lastSelection;
 	Creature _lastFittest1;
 	Creature _lastFittest2;
 
@@ -99,7 +98,7 @@ public sealed partial class MainWindow: Gtk.Window
 		_ex1.Text = creature == null ? "" : Limit (creature.EnergyExtractionRatio.ToString (), MaxLength);
 		_fEnz1.Text = creature == null ? "" : creature.Enzymes [0].ToString ();
 		_sEnz1.Text = creature == null ? "" : creature.Enzymes.Count > 1 ? creature.Enzymes [1].ToString () : "N/A";
-		_ep1.Text = creature == null ? "" : creature.EatDecision.Type.ToString();
+		_ep1.Text = creature == null ? "" : creature.EatDecision.Type.ToString ();
 	}
 
 	void UpdateCreature2Details ()
@@ -117,7 +116,7 @@ public sealed partial class MainWindow: Gtk.Window
 		_ex2.Text = creature == null ? "" : Limit (creature.EnergyExtractionRatio.ToString (), MaxLength);
 		_fEnz2.Text = creature == null ? "" : creature.Enzymes [0].ToString ();
 		_sEnz2.Text = creature == null ? "" : creature.Enzymes.Count > 1 ? creature.Enzymes [1].ToString () : "N/A";
-		_ep2.Text = creature == null ? "" : creature.EatDecision.Type.ToString();
+		_ep2.Text = creature == null ? "" : creature.EatDecision.Type.ToString ();
 	}
 
 	void HandleNextGenerationAvailable (object sender, PopulationEventArgs e)
@@ -197,7 +196,6 @@ public sealed partial class MainWindow: Gtk.Window
 
 		_lastFittest1 = null;
 		_lastFittest2 = null;
-		_lastSelection = null;
 
 		UpdateCreature1Details ();
 		UpdateCreature2Details ();
@@ -235,7 +233,7 @@ public sealed partial class MainWindow: Gtk.Window
 	#region UI Events
 
 
-	protected void OnActionClicked (object sender, EventArgs e)
+	private void OnActionClicked (object sender, EventArgs e)
 	{
 		UpdateSaveAndInjectButtons (false);
 
@@ -246,13 +244,13 @@ public sealed partial class MainWindow: Gtk.Window
 		}
 	}
 
-	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
+	private void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
 		Application.Quit ();
 		a.RetVal = true;
 	}
 
-	protected void OnResetClicked (object sender, EventArgs e)
+	private void OnResetClicked (object sender, EventArgs e)
 	{
 		UpdateSaveAndInjectButtons (false);
 
@@ -263,22 +261,22 @@ public sealed partial class MainWindow: Gtk.Window
 		_resetWarning.Visible = false;
 	}
 
-	protected void OnCloseClicked (object sender, EventArgs e)
+	private void OnCloseClicked (object sender, EventArgs e)
 	{
 		Destroy ();
 	}
 
-	protected void OnSave1Clicked (object sender, EventArgs e)
+	private void OnSave1Clicked (object sender, EventArgs e)
 	{
 		CreatureSaver.Save (_lastFittest1, "creature.dna");
 	}
 
-	protected void OnSave2Clicked (object sender, EventArgs e)
+	private void OnSave2Clicked (object sender, EventArgs e)
 	{
 		CreatureSaver.Save (_lastFittest2, "creature.dna");
 	}
 
-	protected void OnInject1Clicked (object sender, EventArgs e)
+	private void OnInject1Clicked (object sender, EventArgs e)
 	{
 		byte[] dna = CreatureLoader.Load ();
 
@@ -292,7 +290,7 @@ public sealed partial class MainWindow: Gtk.Window
 		}
 	}
 
-	protected void OnInject2Clicked (object sender, EventArgs e)
+	private void OnInject2Clicked (object sender, EventArgs e)
 	{
 		byte[] dna = CreatureLoader.Load ();
 
@@ -325,7 +323,7 @@ public sealed partial class MainWindow: Gtk.Window
 		enable;
 	}
 
-	protected void ShowResetWarning (object o, EventArgs args)
+	private void ShowResetWarning (object o, EventArgs args)
 	{
 		_resetWarning.Visible = true;
 	}

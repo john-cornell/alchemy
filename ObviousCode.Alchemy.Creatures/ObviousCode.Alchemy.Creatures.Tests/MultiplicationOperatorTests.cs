@@ -16,8 +16,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			MultiplicationOperator op = new MultiplicationOperator ();
 
-			op.Push (new Value (1.55m));
-			op.Push (new Value (10m));
+			op.Push (new Value (1.55m, "TEST"));
+			op.Push (new Value (10m, "TEST"));
 
 			decimal value = op.GetValue ();
 
@@ -32,23 +32,23 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			MultiplicationOperator level1a_2 = new MultiplicationOperator ();
 
 			//-10
-			level1a_1.Push (new Value (2.5m));
-			level1a_1.Push (new Value (-4m));
+			level1a_1.Push (new Value (2.5m, "TEST"));
+			level1a_1.Push (new Value (-4m, "TEST"));
 
 			//38
-			level1a_2.Push (new Value (15.2m));
-			level1a_2.Push (new Value (2.5m));
+			level1a_2.Push (new Value (15.2m, "TEST"));
+			level1a_2.Push (new Value (2.5m, "TEST"));
 
 			MultiplicationOperator level1b_1 = new MultiplicationOperator ();
 			MultiplicationOperator level1b_2 = new MultiplicationOperator ();
 
 			//19.71
-			level1b_1.Push (new Value (7.3m));
-			level1b_1.Push (new Value (2.7m));
+			level1b_1.Push (new Value (7.3m, "TEST"));
+			level1b_1.Push (new Value (2.7m, "TEST"));
 
 			//9
-			level1b_2.Push (new Value (9m));
-			level1b_2.Push (new Value (1m));
+			level1b_2.Push (new Value (9m, "TEST"));
+			level1b_2.Push (new Value (1m, "TEST"));
 
 			MultiplicationOperator level2a = new MultiplicationOperator ();
 			MultiplicationOperator level2b = new MultiplicationOperator ();
@@ -74,14 +74,14 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			MultiplicationOperator operator1 = new MultiplicationOperator ();
 
 			//55
-			operator1.Push (new Value (10m));
-			operator1.Push (new Value (5.5m));
+			operator1.Push (new Value (10m, "TEST"));
+			operator1.Push (new Value (5.5m, "TEST"));
 
 			MultiplicationOperator operator2 = new MultiplicationOperator ();
 
 			//9
-			operator2.Push (new Value (2m));
-			operator2.Push (new Value (4.5m));
+			operator2.Push (new Value (2m, "TEST"));
+			operator2.Push (new Value (4.5m, "TEST"));
 
 			MultiplicationOperator output = new MultiplicationOperator ();
 
@@ -97,14 +97,14 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			MultiplicationOperator operatorValue = new MultiplicationOperator ();
 
 			//55m
-			operatorValue.Push (new Value (10m));
-			operatorValue.Push (new Value (5.5m));
+			operatorValue.Push (new Value (10m, "TEST"));
+			operatorValue.Push (new Value (5.5m, "TEST"));
 
 			MultiplicationOperator output = new MultiplicationOperator ();
 
 			//220
 			output.Push (operatorValue);
-			output.Push (new Value (4m));
+			output.Push (new Value (4m, "TEST"));
 
 			Assert.AreEqual (220m, output.GetValue ());
 		}

@@ -143,7 +143,7 @@ namespace ObviousCode.Alchemy.Creatures
 		{			 
 			_eatDecisions.ClearTransientValues ();
 
-			_eatDecisions.LoadTransientValue (new Value ((decimal)Energy));
+			_eatDecisions.LoadTransientValue (new Value ((decimal)Energy, "Current Energy"));
 
 			return _eatDecisions.GetDecision (DecisionPredicateIndex_Eat);
 		}

@@ -21,7 +21,9 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 
 			Enumerable.Range (2, internalRandom.Next (20))
 				.ToList ()
-				.ForEach (i => decisions.LoadConstantValue (new Value (internalRandom.Next () % 255)));
+				.ForEach (i => {
+				decisions.LoadConstantValue (new Value (internalRandom.Next () % 255));
+			});
 
 			random = internalRandom;
 

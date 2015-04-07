@@ -16,8 +16,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			SubtractionOperator subtraction = new SubtractionOperator ();
 
-			subtraction.Push (new Value (10m));
-			subtraction.Push (new Value (5.5m));
+			subtraction.Push (new Value (10m, "TEST"));
+			subtraction.Push (new Value (5.5m, "TEST"));
 
 			Assert.AreEqual (4.5m, subtraction.GetValue ());
 		}
@@ -30,23 +30,23 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			SubtractionOperator level1a_2 = new SubtractionOperator ();
 
 			//40
-			level1a_1.Push (new Value (34.4m));
-			level1a_1.Push (new Value (-5.6m));
+			level1a_1.Push (new Value (34.4m, "TEST"));
+			level1a_1.Push (new Value (-5.6m, "TEST"));
 
 			//10.5
-			level1a_2.Push (new Value (15.2m));
-			level1a_2.Push (new Value (4.7m));
+			level1a_2.Push (new Value (15.2m, "TEST"));
+			level1a_2.Push (new Value (4.7m, "TEST"));
 
 			SubtractionOperator level1b_1 = new SubtractionOperator ();
 			SubtractionOperator level1b_2 = new SubtractionOperator ();
 
 			//5.5
-			level1b_1.Push (new Value (7.3m));
-			level1b_1.Push (new Value (1.8m));
+			level1b_1.Push (new Value (7.3m, "TEST"));
+			level1b_1.Push (new Value (1.8m, "TEST"));
 
 			//8
-			level1b_2.Push (new Value (9m));
-			level1b_2.Push (new Value (1m));
+			level1b_2.Push (new Value (9m, "TEST"));
+			level1b_2.Push (new Value (1m, "TEST"));
 
 			SubtractionOperator level2a = new SubtractionOperator ();
 			SubtractionOperator level2b = new SubtractionOperator ();
@@ -74,14 +74,14 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			SubtractionOperator operator1 = new SubtractionOperator ();
 
 			//4.5
-			operator1.Push (new Value (10m));
-			operator1.Push (new Value (5.5m));
+			operator1.Push (new Value (10m, "TEST"));
+			operator1.Push (new Value (5.5m, "TEST"));
 
 			SubtractionOperator operator2 = new SubtractionOperator ();
 
 			//7.5
-			operator2.Push (new Value (12.2m));
-			operator2.Push (new Value (4.7m));
+			operator2.Push (new Value (12.2m, "TEST"));
+			operator2.Push (new Value (4.7m, "TEST"));
 
 			SubtractionOperator output = new SubtractionOperator ();
 
@@ -99,13 +99,13 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			SubtractionOperator operatorValue = new SubtractionOperator ();
 
 			//4.5
-			operatorValue.Push (new Value (10m));
-			operatorValue.Push (new Value (5.5m));
+			operatorValue.Push (new Value (10m, "TEST"));
+			operatorValue.Push (new Value (5.5m, "TEST"));
 
 			SubtractionOperator output = new SubtractionOperator ();
 
 			output.Push (operatorValue);
-			output.Push (new Value (4.5m));
+			output.Push (new Value (4.5m, "TEST"));
 
 			decimal value = output.GetValue ();
 

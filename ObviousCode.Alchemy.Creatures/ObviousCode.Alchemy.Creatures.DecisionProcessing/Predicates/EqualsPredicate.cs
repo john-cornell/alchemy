@@ -15,6 +15,11 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 				return Predicate.PredicateType.Equals;
 			}
 		}
+
+		public override string Describe ()
+		{
+			return string.Format ("( {0} == {1} )", Stack [0].Describe (), Stack [1].Describe ());
+		}
 	}
 }
 

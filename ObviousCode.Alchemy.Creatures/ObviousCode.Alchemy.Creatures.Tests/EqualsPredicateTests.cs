@@ -16,8 +16,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 
-			equals.Push (new Value (3.5m));
-			equals.Push (new Value (6.5m));
+			equals.Push (new Value (3.5m, "TEST"));
+			equals.Push (new Value (6.5m, "TEST"));
 
 			Assert.IsFalse (equals.GetValue ());
 		}
@@ -27,8 +27,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 
-			equals.Push (new Value (3.5m));
-			equals.Push (new Value (3.5m));
+			equals.Push (new Value (3.5m, "TEST"));
+			equals.Push (new Value (3.5m, "TEST"));
 
 			Assert.IsTrue (equals.GetValue ());
 		}
@@ -48,7 +48,7 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 
-			equals.Push (new Value (23m));
+			equals.Push (new Value (23m, "TEST"));
 
 			Assert.IsTrue (equals.GetValue ());
 		}
@@ -59,9 +59,9 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			EqualsPredicate equals = new EqualsPredicate ();
 
-			equals.Push (new Value (123.456m));
-			equals.Push (new Value (123.456m));
-			equals.Push (new Value (123.456m));
+			equals.Push (new Value (123.456m, "TEST"));
+			equals.Push (new Value (123.456m, "TEST"));
+			equals.Push (new Value (123.456m, "TEST"));
 
 			Assert.IsTrue (equals.GetValue ());
 		}

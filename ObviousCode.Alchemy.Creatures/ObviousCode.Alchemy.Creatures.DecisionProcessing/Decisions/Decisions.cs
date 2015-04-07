@@ -13,6 +13,7 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		}
 
 		Random _random;
+
 		readonly Values _values;
 
 		public List<Predicate> DecisionProviders { get; private set; }
@@ -45,21 +46,28 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 
 			try {
 						
-				predicate = DecisionProviders [predicateIndex % DecisionProviders.Count];						
-
-				Random random = new Random (predicate.Seed);
-				
-				predicate.Push (_values.GetValue (random));
-				predicate.Push (_values.GetValue (random));
-
+				predicate = GetDecisionProvider (predicateIndex);						
+									
 				return predicate.GetValue () ? Outcome.True : Outcome.False;
 
-			} catch (Exception e) {
+			} catch { /*(Exception e) */
 				return Outcome.Die;
 			} finally {		
 				if (predicate != null)
 					predicate.Stack.Clear ();
 			}
+		}
+
+		public Predicate GetDecisionProvider (int predicateIndex)
+		{
+			Predicate predicate = null;
+
+			predicate = DecisionProviders [predicateIndex % DecisionProviders.Count];
+
+			Random random = new Random (predicate.Seed);
+			predicate.Push (_values.GetValue (random));
+			predicate.Push (_values.GetValue (random));
+			return predicate;
 		}
 
 		public void LoadConstantValue (Value value)

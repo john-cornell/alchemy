@@ -16,8 +16,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			LessThanPredicate lessThan = new LessThanPredicate ();
 
-			lessThan.Push (new Value (3.5m));
-			lessThan.Push (new Value (6.5m));
+			lessThan.Push (new Value (3.5m, "TEST"));
+			lessThan.Push (new Value (6.5m, "TEST"));
 
 			Assert.IsFalse (lessThan.GetValue ());
 		}
@@ -27,8 +27,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			LessThanPredicate lessThan = new LessThanPredicate ();
 
-			lessThan.Push (new Value (6.5m));
-			lessThan.Push (new Value (3.5m));
+			lessThan.Push (new Value (6.5m, "TEST"));
+			lessThan.Push (new Value (3.5m, "TEST"));
 
 			Assert.IsTrue (lessThan.GetValue ());
 		}

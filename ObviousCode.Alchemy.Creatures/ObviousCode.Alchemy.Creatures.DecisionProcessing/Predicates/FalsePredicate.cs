@@ -9,10 +9,15 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			return false;
 		}
 
+		public override string Describe ()
+		{
+			return "FALSE";
+		}
+
 		public override PredicateType Type {
 			get {
 				return Predicate.PredicateType.False;
-				}
+			}
 		}
 	}
 }

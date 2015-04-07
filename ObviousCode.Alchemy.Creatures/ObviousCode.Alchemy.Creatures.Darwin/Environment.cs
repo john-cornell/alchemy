@@ -87,7 +87,7 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 		protected abstract double Evaluate (Creature creature);
 
 		public void RequestInjection (byte[] dna, int index)
-		{
+		{			
 			Engine.RequestInjection (dna, index);
 		}
 

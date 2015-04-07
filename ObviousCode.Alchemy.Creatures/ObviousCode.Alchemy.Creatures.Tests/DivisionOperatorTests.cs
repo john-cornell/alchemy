@@ -16,8 +16,8 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			DivisionOperator addition = new DivisionOperator ();
 
-			addition.Push (new Value (10m));
-			addition.Push (new Value (5.5m));
+			addition.Push (new Value (10m, "TEST"));
+			addition.Push (new Value (5.5m, "TEST"));
 
 			Assert.AreEqual (10m / 5.5m, addition.GetValue ());
 		}
@@ -30,23 +30,23 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 			DivisionOperator level1a_2 = new DivisionOperator ();
 
 			//-8
-			level1a_1.Push (new Value (16m));
-			level1a_1.Push (new Value (-2m));
+			level1a_1.Push (new Value (16m, "TEST"));
+			level1a_1.Push (new Value (-2m, "TEST"));
 
 			//2
-			level1a_2.Push (new Value (22m));
-			level1a_2.Push (new Value (11m));
+			level1a_2.Push (new Value (22m, "TEST"));
+			level1a_2.Push (new Value (11m, "TEST"));
 
 			DivisionOperator level1b_1 = new DivisionOperator ();
 			DivisionOperator level1b_2 = new DivisionOperator ();
 
 			//16
-			level1b_1.Push (new Value (8m));
-			level1b_1.Push (new Value (-.5m));
+			level1b_1.Push (new Value (8m, "TEST"));
+			level1b_1.Push (new Value (-.5m, "TEST"));
 
 			//-4
-			level1b_2.Push (new Value (16m));
-			level1b_2.Push (new Value (4m));
+			level1b_2.Push (new Value (16m, "TEST"));
+			level1b_2.Push (new Value (4m, "TEST"));
 
 			DivisionOperator level2a = new DivisionOperator ();
 			DivisionOperator level2b = new DivisionOperator ();
@@ -72,13 +72,13 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			DivisionOperator operator1 = new DivisionOperator ();
 
-			operator1.Push (new Value (500m));
-			operator1.Push (new Value (5m));
+			operator1.Push (new Value (500m, "TEST"));
+			operator1.Push (new Value (5m, "TEST"));
 
 			DivisionOperator operator2 = new DivisionOperator ();
 
-			operator2.Push (new Value (40m));
-			operator2.Push (new Value (4m));
+			operator2.Push (new Value (40m, "TEST"));
+			operator2.Push (new Value (4m, "TEST"));
 
 			DivisionOperator output = new DivisionOperator ();
 
@@ -93,13 +93,13 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			DivisionOperator operatorValue = new DivisionOperator ();
 			//2
-			operatorValue.Push (new Value (10m));
-			operatorValue.Push (new Value (5m));
+			operatorValue.Push (new Value (10m, "TEST"));
+			operatorValue.Push (new Value (5m, "TEST"));
 
 			DivisionOperator output = new DivisionOperator ();
 
 			output.Push (operatorValue);
-			output.Push (new Value (4m));
+			output.Push (new Value (4m, "TEST"));
 
 			Assert.AreEqual (.5m, output.GetValue ());
 		}

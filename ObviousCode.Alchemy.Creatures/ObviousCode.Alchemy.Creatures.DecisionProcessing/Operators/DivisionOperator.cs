@@ -12,6 +12,13 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 
 			return lhs / rhs;
 		}
+
+		public override string Describe ()
+		{
+			return string.Format (" ( {0} / {1} ) "
+								, Stack [0].Describe ()
+								, Stack [1].Describe ());
+		}
 	}
 }
 

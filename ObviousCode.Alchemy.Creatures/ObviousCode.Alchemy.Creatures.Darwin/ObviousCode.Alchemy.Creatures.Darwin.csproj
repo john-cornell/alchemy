@@ -48,12 +48,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Folder Include="EventArgs\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ObviousCode.Alchemy.Creatures\ObviousCode.Alchemy.Creatures.csproj">
       <Project>{EF46E974-0F6E-47F7-A05C-FE4645A16988}</Project>
       <Name>ObviousCode.Alchemy.Creatures</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EventArgs\" />
   </ItemGroup>
 </Project>

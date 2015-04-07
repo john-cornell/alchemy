@@ -10,6 +10,8 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		}
 
 		public abstract decimal GetValue ();
+
+		public abstract string Describe ();
 	}
 }
 
