@@ -8,7 +8,8 @@ namespace ObviousCode.Alchemy.Library
 	public class Engine<T>
 	{
 		Population<T> _population;
-		Evaluator<T> _evaluator;	
+		Evaluator<T> _evaluator;
+
 		public event EventHandler<FitnessSelectionEventArgs<T>> FitnessSelectionAvailable;
 
 		public Engine (Evaluator<T> evaluator)
@@ -28,17 +29,17 @@ namespace ObviousCode.Alchemy.Library
 		/// <summary>
 		/// Initialise a population with default population size and genome length (as set in Population and Individual configurations
 		/// </summary>
-		public void Setup()
+		public void Setup ()
 		{
 			_population.Initialise ();
 		}
 
-		public void Setup(int populationSize, int genomeSize)
+		public void Setup (int populationSize, int genomeSize)
 		{
 			_population.Initialise (populationSize, genomeSize);
 		}
 
-		public Population<T> ExecuteOneGeneration()
+		public Population<T> ExecuteOneGeneration ()
 		{
 			Population<T> nextGen = Population<T>.CreateEmptyPopulation ();
 
@@ -66,13 +67,13 @@ namespace ObviousCode.Alchemy.Library
 			if (fittestList.Count == 2) {
 				first = fittestList [0];
 				second = fittestList [1];
-			}
-			else {
+			} else {
 				int firstIdx = ConfigurationProvider.Rnd.Next (fittestList.Count);
 				int secondIdx = firstIdx;
 				while (firstIdx == secondIdx) {
 					secondIdx = ConfigurationProvider.Rnd.Next (fittestList.Count);
-				};
+				}
+				;
 
 				first = fittestList [firstIdx];
 				second = fittestList [secondIdx];
@@ -89,7 +90,8 @@ namespace ObviousCode.Alchemy.Library
 				Individual<T>[] parents = SelectParents (fittestList);
 				Individual<T> child = CrossoverProvider.GetNextCrossover ().PerformCrossover (parents [0], parents [1]);
 				nextGen.Add (child);
-			};
+			}
+			;
 		}
 
 		List<Individual<T>> SelectFittest (double[] fitness)
@@ -97,6 +99,11 @@ namespace ObviousCode.Alchemy.Library
 			Selector selector = SelectionProvider.GetSelector ();
 		
 			return selector.SelectFittest (_population, fitness).ToList ();
+		}
+
+		public void RequestInjection (T[] dna, int index)
+		{
+			Array.Copy (dna, _population [index].Code, Math.Min (dna.Length, _population [index].Code.Length));
 		}
 	}
 }
