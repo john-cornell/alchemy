@@ -41,10 +41,13 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Environment_RandomNumber.cs" />
     <Compile Include="Environment.cs" />
     <Compile Include="EventArgs\PopulationEventArgs.cs" />
     <Compile Include="EventArgs\AfterSelectionStateEventArgs.cs" />
+    <Compile Include="Simulator.cs" />
+    <Compile Include="Environment_FoodSlowlyReplenish.cs" />
+    <Compile Include="Environment_RandomFood.cs" />
+    <Compile Include="IRemainingFoodReporter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -54,6 +57,10 @@
     <ProjectReference Include="..\ObviousCode.Alchemy.Creatures\ObviousCode.Alchemy.Creatures.csproj">
       <Project>{EF46E974-0F6E-47F7-A05C-FE4645A16988}</Project>
       <Name>ObviousCode.Alchemy.Creatures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObviousCode.Alchemy.Creatures.DecisionProcessing\ObviousCode.Alchemy.Creatures.DecisionProcessing.csproj">
+      <Project>{7FE8E301-1574-4C8D-8A66-2E3580E6D856}</Project>
+      <Name>ObviousCode.Alchemy.Creatures.DecisionProcessing</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

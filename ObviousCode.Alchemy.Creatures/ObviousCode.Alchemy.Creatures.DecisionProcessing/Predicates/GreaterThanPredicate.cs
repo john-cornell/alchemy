@@ -17,6 +17,11 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 								, Stack [0].Describe ());
 		}
 
+		public override Predicate CreateNew ()
+		{
+			return new GreaterThanPredicate ();
+		}
+
 		public override PredicateType Type {
 			get {
 				return Predicate.PredicateType.GT;

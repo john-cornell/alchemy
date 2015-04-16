@@ -34,7 +34,7 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		{
 			ValueProvider valueProvider = new ValueProvider ();
 
-			OperatorValue operatorValue = _operators [random.Next () % _operators.Count];
+			OperatorValue operatorValue = _operators [random.Next () % _operators.Count].CreateNew ();
 
 			operatorValue.Push (valueProvider.GetValue (availableValues, random, operatorChance));
 			operatorValue.Push (valueProvider.GetValue (availableValues, random, operatorChance));

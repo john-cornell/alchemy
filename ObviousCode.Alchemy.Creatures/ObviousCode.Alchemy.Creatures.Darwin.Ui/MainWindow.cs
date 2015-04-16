@@ -1,5 +1,6 @@
 ﻿using System;
 using Gtk;
+using ObviousCode;
 using System.Collections.Generic;
 using ObviousCode.Alchemy.Library;
 using ObviousCode.Alchemy.Creatures.Darwin;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using ObviousCode.Alchemy.Creatures.Darwin.Ui;
 using ObviousCode.Alchemy.Creatures;
 using ObviousCode.Alchemy.Library.Populous;
+using ObviousCode.Alchemy.Creatures.DecisionProcessing;
 
 public sealed partial class MainWindow: Gtk.Window
 {
@@ -16,10 +18,18 @@ public sealed partial class MainWindow: Gtk.Window
 	Evaluator _currentEvaluator;
 
 	static string _label_random;
+	static string _label_slowlyReplenish;
 
 	bool _running = false;
 
 	const int MaxLength = 8;
+
+
+	Creature _lastFittest1;
+	Creature _lastFittest2;
+	byte[] _loadedForSimulation;
+
+	Simulator _simulator;
 
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
@@ -30,7 +40,7 @@ public sealed partial class MainWindow: Gtk.Window
 		_process.ProcessesStopped += (sender, e) => {
 					
 			_reset.Sensitive = true;
-			UpdateSaveAndInjectButtons (true);
+			UpdateControlEnablement (true);
 		
 			if (e.ReasonForStopping == ProcessingStoppedEventArgs.HaltReason.Exception) {
 				
@@ -63,9 +73,6 @@ public sealed partial class MainWindow: Gtk.Window
 	}
 
 	#region Generation Update
-
-	Creature _lastFittest1;
-	Creature _lastFittest2;
 
 	void HandleFitnessSelectionAvailable (object sender, AfterSelectionStateEventArgs e)
 	{		
@@ -168,7 +175,8 @@ public sealed partial class MainWindow: Gtk.Window
 
 	void LoadEnvironments ()
 	{
-		_label_random = new Environment_RandomNumber ().Label;
+		_label_random = new Environment_RandomFood ().Label;
+		_label_slowlyReplenish = new Environment_FoodSlowlyReplenish ().Label;
 
 		_environments.Model = new ListStore (typeof(string));
 
@@ -176,6 +184,13 @@ public sealed partial class MainWindow: Gtk.Window
 			.AppendValues (
 			new string[] {
 				_label_random
+			}
+		);
+
+		(_environments.Model as ListStore)
+			.AppendValues (
+			new string[] {
+				_label_slowlyReplenish
 			}
 		);
 
@@ -203,18 +218,28 @@ public sealed partial class MainWindow: Gtk.Window
 		if (!string.IsNullOrEmpty ((_environments as ComboBox).ActiveText)) {
 			string request = ((_environments as ComboBox).ActiveText);
 
-			if (request == _label_random) {
-				
-				int population = (int)_population.Value;
-				int genomeLength = (int)_genomeLength.Value;
+			int population = (int)_population.Value;
+			int genomeLength = (int)_genomeLength.Value;
 
-				_currentEvaluator = new Environment_RandomNumber ((e) => e.Setup (population, genomeLength));						
+			if (request == _label_random) {
+							
+				_currentEvaluator = new Environment_RandomFood ((e) => e.Setup (population, genomeLength));						
+			} else if (request == _label_slowlyReplenish) {
+
+				_currentEvaluator = new Environment_FoodSlowlyReplenish ((e) => e.Setup (population, genomeLength));						
 			}
 		}
 
 		if (_currentEvaluator != null) {
 			_currentEvaluator.AfterSelectionStateAvailable += HandleFitnessSelectionAvailable;
 			_currentEvaluator.NextGenerationAvailable += HandleNextGenerationAvailable;
+
+			if (_currentEvaluator is IRemainingFoodReporter) {
+				
+				Action<int> handleRemainingFood = (f) => Invoke (() => _foodLabel.Text = f.ToString ());
+
+				(_currentEvaluator as IRemainingFoodReporter).ReportRemainingFood = handleRemainingFood;
+			}
 
 			_action.Label = "Go";
 		}
@@ -224,6 +249,8 @@ public sealed partial class MainWindow: Gtk.Window
 	{
 		_currentEvaluator.AfterSelectionStateAvailable -= HandleFitnessSelectionAvailable;
 		_currentEvaluator.NextGenerationAvailable -= HandleNextGenerationAvailable;
+
+		_currentEvaluator.Reset ();
 
 		_action.Label = "Choose Environment";
 	}
@@ -235,7 +262,7 @@ public sealed partial class MainWindow: Gtk.Window
 
 	private void OnActionClicked (object sender, EventArgs e)
 	{
-		UpdateSaveAndInjectButtons (false);
+		UpdateControlEnablement (false);
 
 		if (_running) {
 			StopProcess ();
@@ -252,7 +279,7 @@ public sealed partial class MainWindow: Gtk.Window
 
 	private void OnResetClicked (object sender, EventArgs e)
 	{
-		UpdateSaveAndInjectButtons (false);
+		UpdateControlEnablement (false);
 
 		LoadCurrentEvaluator ();
 
@@ -278,13 +305,15 @@ public sealed partial class MainWindow: Gtk.Window
 
 	private void OnInject1Clicked (object sender, EventArgs e)
 	{
+		Incubator incubator = new Incubator ();
+
 		byte[] dna = CreatureLoader.Load ();
 
 		if (dna != null) {
 
 			_currentEvaluator.RequestInjection (dna, 0);
 
-			_lastFittest1 = Incubator.Incubate (dna);
+			_lastFittest1 = incubator.Incubate (dna);
 
 			UpdateCreature1Details ();
 		}
@@ -292,13 +321,15 @@ public sealed partial class MainWindow: Gtk.Window
 
 	private void OnInject2Clicked (object sender, EventArgs e)
 	{
+		Incubator incubator = new Incubator ();
+
 		byte[] dna = CreatureLoader.Load ();
 
 		if (dna != null) {
 
 			_currentEvaluator.RequestInjection (dna, 1);
 
-			_lastFittest2 = Incubator.Incubate (dna);
+			_lastFittest2 = incubator.Incubate (dna);
 
 			UpdateCreature2Details ();
 		}
@@ -314,18 +345,136 @@ public sealed partial class MainWindow: Gtk.Window
 		}));
 	}
 
-	void UpdateSaveAndInjectButtons (bool enable)
+	void UpdateControlEnablement (bool enable)
 	{
 		_save1.Sensitive =
 		_save2.Sensitive =
 		_inject1.Sensitive =
 		_inject2.Sensitive =
+		_decisionProcessing.Sensitive =
 		enable;
+
+		if (_lastFittest1 != null && _decisionProcessing.Sensitive) {
+			_selection1rb.Active = true;
+			LoadEatDecision (_lastFittest1);
+		}
 	}
 
 	private void ShowResetWarning (object o, EventArgs args)
 	{
 		_resetWarning.Visible = true;
+	}
+
+	private void OnSelection1rbClicked (object sender, EventArgs e)
+	{
+		LoadEatDecision (_lastFittest1);
+	}
+
+	private void OnSelection2rbClicked (object sender, EventArgs e)
+	{
+		LoadEatDecision (_lastFittest2);
+	}
+
+	void LoadEatDecision (Creature creature)
+	{		
+		Decisions decisions = creature.DecisionsLookup [Creature.DecisionTypes.Eat];
+
+		decisions.ClearTransientValues ();
+		decisions.LoadTransientValue (new Value (creature.Energy, "Current Energy"));
+
+		_eatDecisionText.Buffer.Text = decisions.GetDecisionProvider (creature.DecisionPredicateIndex_Eat).Describe ();
+	}
+
+	private void OnButton1Clicked (object sender, EventArgs e)
+	{
+		Simulate (1);
+	}
+
+	bool _continueSimulation = true;
+
+	void Simulate (int iterations)
+	{
+		if (_loadedForSimulation == null) {
+			DisplayDialog ("No simulation loaded");
+			return;
+		}
+
+		_continueSimulation = true;
+
+		_simDescription.Buffer.Clear ();	
+
+		SimWrite ("Start ...");
+
+		for (int i = 0; i < iterations; i++) {
+			SimWrite ("Iteration '{0}' ...", i);
+			_simulator.RunTurn (1);
+			if (!_continueSimulation)
+				break;
+		}
+
+		SimWrite ("... Completed");
+	}
+
+	private void OnLoadSim1Clicked (object sender, EventArgs e)
+	{
+		
+
+		_loadedForSimulation = _lastFittest1.Code;
+
+		_loadedSimulatorLabel.Text = "Selection 1";
+
+		PrepareSimulator ();	
+	}
+
+	private void OnLoadSim2Clicked (object sender, EventArgs e)
+	{
+		_loadedForSimulation = _lastFittest2.Code;
+	
+		_loadedSimulatorLabel.Text = "Selection 2";
+
+		PrepareSimulator ();
+	}
+
+	void PrepareSimulator ()
+	{
+		_simulator = new Simulator (_currentEvaluator, _loadedForSimulation);
+
+		_simulate1Turn.Sensitive = true;
+
+		_simulator.ActualEnergyExtracted += (sender, e) => SimWrite ("Actual Energy Extracted = '{0}'", e.Item);
+		_simulator.CreatureAboutToDigest += (sender, e) => SimWrite ("Attempt to Digest '{0}' ({1})", e.Item, Convert.ToString (e.Item, 2));
+		_simulator.CreatureDigestionCostRemoved += (sender, e) => SimWrite ("Digestion Cost '{0}', Energy = '{1}'", e.Item, _simulator.SimulatedCreature.Energy);
+		_simulator.CreatureDied += (sender, e) => {
+			SimWrite ("Died. Cause '{0}'", _simulator.SimulatedCreature.CauseOfDeath);
+			_continueSimulation = false;
+		};
+		_simulator.CreatureEnzymeCostRemoved += (sender, e) => SimWrite ("Enzyme Process Cost '{0}', Energy = '{1}'", e.Item, _simulator.SimulatedCreature.Energy);
+		_simulator.EatDecisionPredicatePrepared += (sender, e) => {
+			SimWrite ("Eat Decision Predicate Prepared. '{0}'", e.Item.Type);
+			SimWrite (e.Item.Describe ());
+		};
+
+		_simulator.EatDecisionResolved += (sender, e) => SimWrite ("Decision To Eat: '{0}'", e.Item);
+		_simulator.EnzymeEvaluated += (sender, e) => SimWrite ("Enzyme evaluated: Enzyme '{0}' ({1}), extracts '{2}' ({3}). Success '{4}'", e.Item1, Convert.ToString (e.Item1, 2), e.Item2, Convert.ToString (e.Item2, 2), e.Item3);
+		_simulator.EnzymeProcessCompleted += (sender, e) => SimWrite ("Enzyme complete, food remaining '{0}' ({1}), Energy '{2}'", e.Item, Convert.ToString (e.Item, 2), _simulator.SimulatedCreature.Energy);
+		_simulator.PotentialExtractionCalcaulated += (sender, e) => SimWrite ("Potential Energy Extracted = '{0}' ({1})", e.Item, Convert.ToString (e.Item, 2));
+	}
+
+	private void SimWrite (string message, params object[] items)
+	{
+		_simDescription.Buffer.Text += string.Format (message, items);
+		_simDescription.Buffer.Text += System.Environment.NewLine;
+	}
+
+	void DisplayDialog (string message)
+	{
+		System.Action action = () => {
+			MessageDialog md = new MessageDialog (null, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok, message);
+			md.Run ();
+			md.Destroy ();
+		};
+
+		Invoke (action);
 	}
 }
 	

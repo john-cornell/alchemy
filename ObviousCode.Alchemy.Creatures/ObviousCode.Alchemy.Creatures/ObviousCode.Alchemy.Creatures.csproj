@@ -34,6 +34,7 @@
     <Compile Include="Creature.cs" />
     <Compile Include="CreatureCreationContext.cs" />
     <Compile Include="Incubator.cs" />
+    <Compile Include="EventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

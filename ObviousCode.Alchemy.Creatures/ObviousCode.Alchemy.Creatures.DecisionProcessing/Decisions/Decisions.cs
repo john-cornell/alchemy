@@ -41,12 +41,14 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		}
 
 		public Outcome GetDecision (int predicateIndex)
-		{
-			Predicate predicate = null;
+		{			
+			return GetDecision (GetDecisionProvider (predicateIndex));
+		}
 
-			try {
-						
-				predicate = GetDecisionProvider (predicateIndex);						
+		public Outcome GetDecision (Predicate predicate)
+		{
+			
+			try {							
 									
 				return predicate.GetValue () ? Outcome.True : Outcome.False;
 
@@ -62,11 +64,13 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		{
 			Predicate predicate = null;
 
-			predicate = DecisionProviders [predicateIndex % DecisionProviders.Count];
+			if (DecisionProviders.Count > 0) {
+				predicate = DecisionProviders [predicateIndex % DecisionProviders.Count].CreateNew ();
 
-			Random random = new Random (predicate.Seed);
-			predicate.Push (_values.GetValue (random));
-			predicate.Push (_values.GetValue (random));
+				Random random = new Random (predicate.Seed);
+				predicate.Push (_values.GetValue (random));
+				predicate.Push (_values.GetValue (random));
+			}
 			return predicate;
 		}
 

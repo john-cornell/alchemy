@@ -50,7 +50,7 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		public T this [int index] {
 			get { 
 
-				if (_cursor >= index)
+				if (_cursor <= index)
 					throw new IndexOutOfRangeException ();
 
 				return _stack [index]; 

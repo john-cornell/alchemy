@@ -8,7 +8,7 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		public StackArray<PredicateValue> Stack { get; private set; }
 
 		public OperatorValue ()
-		{
+		{			
 			Stack = new StackArray<PredicateValue> (2);
 		}
 
@@ -16,6 +16,8 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		{			
 			Stack.Push (value);
 		}
+
+		public abstract OperatorValue CreateNew ();
 	}
 }
 

@@ -12,9 +12,11 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			byte[] genes = GenerateRandomGenome (256);
 
-			byte energy = genes [genes [Incubator.StartEnergyPosition]];
+			Incubator incubator = new Incubator ();
 
-			CreatureCreationContext context = Incubator.GenerateContext (genes);
+			CreatureCreationContext context = incubator.GenerateContext (genes);
+
+			byte energy = genes [genes [incubator.Positions [Incubator.GenePosition.StartEnergyPosition]]];
 
 			Assert.AreEqual (energy, context.Energy);
 		}
@@ -26,15 +28,13 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 
 			byte[] genes = GenerateRandomGenome (genomeLength);
 
-			genes [Incubator.StartEnergyPosition] = 30;
+			Incubator incubator = new Incubator ();
 
-			int position = 30 % genomeLength;
+			CreatureCreationContext context = incubator.GenerateContext (genes);
 
-			byte energy = genes [position];
+			int position = genes [incubator.Positions [Incubator.GenePosition.StartEnergyPosition]];		
 
-			CreatureCreationContext context = Incubator.GenerateContext (genes);
-
-			Assert.AreEqual (energy, context.Energy);
+			Assert.AreEqual (genes [position], context.Energy);
 		}
 
 		[Test]
@@ -42,9 +42,13 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			byte[] genes = GenerateRandomGenome (256);
 
-			byte costOfDigestion = genes [genes [Incubator.CostOfDigestionRatioPosition]];
+			Incubator incubator = new Incubator ();
 
-			var context = Incubator.GenerateContext (genes);
+			var context = incubator.GenerateContext (genes);
+
+			int position = genes [incubator.Positions [Incubator.GenePosition.CostOfDigestionRatioPosition]];
+
+			byte costOfDigestion = genes [position];
 
 			Assert.AreEqual (Math.Max ((byte)1, costOfDigestion), context.CostOfDigestion);
 		}
@@ -56,13 +60,13 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 
 			byte[] genes = GenerateRandomGenome (genomeLength);
 
-			genes [Incubator.CostOfDigestionRatioPosition] = 183;
+			Incubator incubator = new Incubator ();
 
-			int position = 183 % genomeLength;
+			var context = incubator.GenerateContext (genes);
+
+			int position = genes [incubator.Positions [Incubator.GenePosition.CostOfDigestionRatioPosition]];	
 
 			byte cost = genes [position];
-
-			CreatureCreationContext context = Incubator.GenerateContext (genes);
 
 			Assert.AreEqual (cost, context.CostOfDigestion);
 		}
@@ -72,9 +76,13 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			byte[] genes = GenerateRandomGenome (256);
 
-			byte costOfEnzymeProcessing = genes [genes [Incubator.CostOfEnzymeProcessingPosition]];
+			Incubator incubator = new Incubator ();
 
-			var context = Incubator.GenerateContext (genes);
+			var context = incubator.GenerateContext (genes);
+
+			int position = genes [incubator.Positions [Incubator.GenePosition.CostOfEnzymeProcessingPosition]];
+
+			byte costOfEnzymeProcessing = genes [position];
 
 			Assert.AreEqual (costOfEnzymeProcessing, context.CostOfEnzymeProcessing);
 		}
@@ -86,13 +94,15 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 
 			byte[] genes = GenerateRandomGenome (genomeLength);				
 
-			int position = genes [Incubator.CostOfEnzymeProcessingPosition] % genomeLength;
+			Incubator incubator = new Incubator ();
 
-			byte cost = genes [position];
+			var context = incubator.GenerateContext (genes);
 
-			CreatureCreationContext context = Incubator.GenerateContext (genes);
+			int position = genes [incubator.Positions [Incubator.GenePosition.CostOfEnzymeProcessingPosition]];
 
-			Assert.AreEqual (cost, context.CostOfEnzymeProcessing);
+			byte costOfEnzymeProcessing = genes [position];
+
+			Assert.AreEqual (costOfEnzymeProcessing, context.CostOfEnzymeProcessing);
 		}
 
 		[Test]
@@ -100,9 +110,13 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			byte[] genes = GenerateRandomGenome (256);
 
-			byte maxEnergyPosition = genes [genes [Incubator.MaxEnergyPosition]];
+			Incubator incubator = new Incubator ();
 
-			var context = Incubator.GenerateContext (genes);
+			var context = incubator.GenerateContext (genes);
+
+			int position = genes [incubator.Positions [Incubator.GenePosition.MaxEnergyPosition]];
+
+			byte maxEnergyPosition = genes [position];
 
 			Assert.AreEqual (maxEnergyPosition, context.EnergyMaximum);
 		}
@@ -112,15 +126,17 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			int genomeLength = 8;
 
-			byte[] genes = GenerateRandomGenome (genomeLength);				
+			byte[] genes = GenerateRandomGenome (genomeLength);
 
-			int position = genes [Incubator.MaxEnergyPosition] % genomeLength;
+			Incubator incubator = new Incubator ();
 
-			byte max = genes [position];
+			var context = incubator.GenerateContext (genes);
 
-			CreatureCreationContext context = Incubator.GenerateContext (genes);
+			int position = genes [incubator.Positions [Incubator.GenePosition.MaxEnergyPosition]];
 
-			Assert.AreEqual (max, context.EnergyMaximum);
+			byte maxEnergyPosition = genes [position];
+
+			Assert.AreEqual (maxEnergyPosition, context.EnergyMaximum);
 		}
 
 
@@ -129,57 +145,15 @@ namespace ObviousCode.Alchemy.Creatures.Tests
 		{
 			byte[] genes = GenerateRandomGenome (256);
 
-			int position = Math.Max ((int)1, (int)genes [Incubator.LengthOfEnzymeChainPosition]);
+			Incubator incubator = new Incubator ();
+
+			var context = incubator.GenerateContext (genes);
+
+			int position = incubator.Positions [Incubator.GenePosition.LengthOfEnzymeChainPosition];
 
 			int length = genes [position];
 
-			var context = Incubator.GenerateContext (genes);
-
 			Assert.AreEqual (length, context.Enzymes.Count);
-		}
-
-		[Test]
-		public void WhenCreatureContextCreated_EnzymesShouldBeCorrect ()
-		{
-			byte[] genes = GenerateRandomGenome (256);
-
-			byte positionOfLength = 65;
-
-			genes [Incubator.LengthOfEnzymeChainPosition] = positionOfLength;
-			genes [positionOfLength] = 2;//2 enzymes
-
-			int startOfEnzymeChain = genes [genes [Incubator.StartOfEnzymeChainPosition]];
-
-			byte enzyme0 = genes [genes [startOfEnzymeChain % 256]];
-			byte enzyme1 = genes [genes [(startOfEnzymeChain + 1) % 256]];
-
-			var context = Incubator.GenerateContext (genes);
-
-			Assert.AreEqual (enzyme0, context.Enzymes [0]);
-			Assert.AreEqual (enzyme1, context.Enzymes [1]);
-		}
-
-		[Test]
-		public void WhenCreatureContextCreated_ShortGenome_EnzymesShouldBeCorrect ()
-		{
-			int genomeLength = 10;
-
-			byte[] genes = GenerateRandomGenome (genomeLength);
-
-			byte positionOfLength = 65;
-
-			genes [Incubator.LengthOfEnzymeChainPosition] = positionOfLength;
-			genes [positionOfLength % genomeLength] = 2;//2 enzymes
-
-			int startOfEnzymeChain = genes [genes [Incubator.StartOfEnzymeChainPosition % genomeLength] % genomeLength];
-
-			byte enzyme0 = genes [genes [startOfEnzymeChain % genomeLength] % genomeLength];
-			byte enzyme1 = genes [genes [(startOfEnzymeChain + 1) % genomeLength] % genomeLength];
-
-			var context = Incubator.GenerateContext (genes);
-
-			Assert.AreEqual (enzyme0, context.Enzymes [0]);
-			Assert.AreEqual (enzyme1, context.Enzymes [1]);
 		}
 
 		byte[] GenerateRandomGenome (int length)

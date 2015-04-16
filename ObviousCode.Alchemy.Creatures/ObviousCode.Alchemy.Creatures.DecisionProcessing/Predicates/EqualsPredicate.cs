@@ -10,6 +10,11 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			return Stack.Pop ().GetValue ().Equals (Stack.Pop ().GetValue ());
 		}
 
+		public override Predicate CreateNew ()
+		{
+			return new EqualsPredicate ();
+		}
+
 		public override PredicateType Type {
 			get {
 				return Predicate.PredicateType.Equals;

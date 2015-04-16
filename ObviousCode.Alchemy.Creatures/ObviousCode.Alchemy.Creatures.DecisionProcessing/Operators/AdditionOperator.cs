@@ -9,6 +9,11 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			return Stack.Pop ().GetValue () + Stack.Pop ().GetValue ();
 		}
 
+		public override OperatorValue CreateNew ()
+		{
+			return new AdditionOperator ();
+		}
+
 		public override string Describe ()
 		{
 			return string.Format (" ( {0} + {1} ) "

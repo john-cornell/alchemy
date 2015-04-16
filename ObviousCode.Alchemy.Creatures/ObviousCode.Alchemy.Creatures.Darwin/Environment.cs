@@ -13,6 +13,8 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 		public event EventHandler<AfterSelectionStateEventArgs> AfterSelectionStateAvailable;
 		public event EventHandler<PopulationEventArgs> NextGenerationAvailable;
 
+		Incubator _incubator;
+
 		protected Environment (string label) : this (label, null)
 		{
 
@@ -25,7 +27,7 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 			Generations = 0;
 
 			Engine = new Engine<byte> (this);
-
+			_incubator = new Incubator ();
 			if (setup != null) {
 				setup (Engine);
 			} else {
@@ -45,9 +47,17 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 					LastPopulation						
 						.ForEach (kvp => args.LastPopulation [kvp.Key] = kvp.Value);
 
+					/*byte[] random1 = new byte[255];
+					byte[] random2 = new byte[255];
+
+					ConfigurationProvider.Rnd.NextBytes (random1);
+					ConfigurationProvider.Rnd.NextBytes (random2);
+
+					Engine.RequestInjection(random1, */
+
 					AfterSelectionStateAvailable (sender, args);
 				}
-			};
+			};				
 		}
 
 		protected void InsertCreature (byte[] code, int idx)
@@ -63,10 +73,13 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 			Generations += 1;
 
 			if (NextGenerationAvailable != null)
-				NextGenerationAvailable (this, new PopulationEventArgs (population, Generations));
+				NextGenerationAvailable (this, new PopulationEventArgs (population, Generations));					
 		}
 
-		protected abstract Population<byte> ExecuteOneGeneration ();
+		protected virtual Population<byte> ExecuteOneGeneration ()
+		{
+			return Engine.ExecuteOneGeneration ();
+		}
 
 		public void BeforeGeneration ()
 		{
@@ -75,9 +88,14 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 
 		protected abstract void PrepareForNextGeneration ();
 
-		protected override double EvaluateItem (ObviousCode.Alchemy.Library.Populous.Individual<byte> item)
+		public virtual double RunIterations (Creature creature, int iterations)
 		{
-			Creature creature = Incubator.Incubate (item.Code);
+			return 0d;
+		}
+
+		protected override double EvaluateItem (ObviousCode.Alchemy.Library.Populous.Individual<byte> item)
+		{			
+			Creature creature = _incubator.Incubate (item.Code);
 		
 			LastPopulation [item.Uid] = creature;
 
@@ -98,5 +116,9 @@ namespace ObviousCode.Alchemy.Creatures.Darwin
 		public int LifetimeIterations { get; set; }
 
 		public Dictionary<string, Creature> LastPopulation { get; private set; }
+
+		public virtual void Reset ()
+		{
+		}
 	}
 }

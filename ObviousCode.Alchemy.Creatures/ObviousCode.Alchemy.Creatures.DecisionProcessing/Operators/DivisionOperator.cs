@@ -13,6 +13,11 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			return lhs / rhs;
 		}
 
+		public override OperatorValue CreateNew ()
+		{
+			return new DivisionOperator ();
+		}
+
 		public override string Describe ()
 		{
 			return string.Format (" ( {0} / {1} ) "

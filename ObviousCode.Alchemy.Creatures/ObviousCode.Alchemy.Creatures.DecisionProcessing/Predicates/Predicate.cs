@@ -15,6 +15,8 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 
 		}
 
+		public abstract Predicate CreateNew ();
+
 		public StackArray<PredicateValue> Stack { get; private set; }
 
 		public int Seed { get; set; }

@@ -11,8 +11,8 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			_predicates = new Predicate[] {
 				new EqualsPredicate (),
 				new FalsePredicate (),
-				new GreaterThanPredicate (),
 				new LessThanPredicate (),
+				new GreaterThanPredicate (),
 				new TruePredicate ()
 			};
 		}
@@ -21,7 +21,7 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 		{
 			index = Math.Abs (index) % _predicates.Length;//avoid index out of range
 
-			return _predicates [index];
+			return _predicates [index].CreateNew ();
 		}
 	}
 }

@@ -8,7 +8,6 @@ namespace ObviousCode.Alchemy.Creatures
 		ExtractFirst = 0,
 		BreakDownFirst = 1,
 		EatFirst = 2
-
 	}
 
 	public class CreatureCreationContext
@@ -33,7 +32,10 @@ namespace ObviousCode.Alchemy.Creatures
 
 		public int DecisionPredicateCount_Eat { get; set; }
 
-		public byte DecisionSeed_Eat { get; set; }
+		public int DecisionPredicate_RandomGeneValueCount_Eat { get; set; }
+
+		public byte DecisionRandomSeed_Eat { get; set; }
+
 
 		public CreatureCreationContext ()
 		{
@@ -48,7 +50,7 @@ namespace ObviousCode.Alchemy.Creatures
 
 			DiningMethod = EatStrategy.BreakDownFirst;
 
-			DecisionSeed_Eat = 1;
+			DecisionRandomSeed_Eat = 1;
 			DecisionPredicateCount_Eat = 1;
 			DecisionPredicateIndex_Eat = 1;
 

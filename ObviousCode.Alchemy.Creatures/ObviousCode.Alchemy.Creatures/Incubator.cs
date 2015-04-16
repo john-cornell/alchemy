@@ -1,53 +1,63 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ObviousCode.Alchemy.Creatures
 {
-	public static class Incubator
+	public class Incubator
 	{
-		//Consider only set position as seed for position randomiser
-		public static int StartEnergyPosition = 0;
-		public static int MaxEnergyPosition = 1;
-		public static int EnergyExtractionRationPosition = 2;
-
-		public static int CostOfDigestionRatioPosition = 3;
-		public static int CostOfEnzymeProcessingPosition = 4;
-
-		public static int DiningMethodPosition = 5;
-
-		public static int DecisionSeedPosition_Eat = 6;
-		public static int DecisionPredicateCountPosition_Eat = 7;
-		public static int DecisionPredicateIndexPosition_Eat = 8;
-
-		public static int LengthOfEnzymeChainPosition = 9;
-		public static int StartOfEnzymeChainPosition = 10;
-
-		public static Creature Incubate (byte[] genes)
+		public enum GenePosition
 		{
+			StartEnergyPosition,
+			MaxEnergyPosition,
+			EnergyExtractionRationPosition,
+
+			CostOfDigestionRatioPosition,
+			CostOfEnzymeProcessingPosition,
+
+			DiningMethodPosition,
+
+			DecisionSeedPosition_Eat,
+			DecisionPredicateCountPosition_Eat,
+			DecisionPredicateIndexPosition_Eat,
+			DecisionPredicateRandomGeneValueCount_Eat,
+
+			LengthOfEnzymeChainPosition,
+			StartOfEnzymeChainPosition
+		}
+
+		public Dictionary<GenePosition, int> Positions { get; private set; }
+
+		public Creature Incubate (byte[] genes)
+		{			
 			var context = GenerateContext (genes);
 
 			return new Creature (context);
 		}
 
-		public static CreatureCreationContext GenerateContext (byte[] genes)
+		public CreatureCreationContext GenerateContext (byte[] genes)
 		{
-			if (genes.Length < 6)
-				throw new InvalidOperationException ("Genome should be 6 long or greater");			
+			LoadPositions (genes);
 
-			int startingEnergy = genes [genes [StartEnergyPosition % genes.Length] % genes.Length];
-			int maxEnergy = genes [genes [MaxEnergyPosition % genes.Length] % genes.Length];
+			if (genes.Length == 0)
+				throw new InvalidOperationException ("0 length genomes not accepted");			
 
-			double energyExtractionRatio = (double)genes [genes [EnergyExtractionRationPosition % genes.Length] % genes.Length] / 255;
+			int startingEnergy = genes [genes [Positions [GenePosition.StartEnergyPosition] % genes.Length] % genes.Length];
+			int maxEnergy = genes [genes [Positions [GenePosition.MaxEnergyPosition] % genes.Length] % genes.Length];
 
-			int costOfDigestion = Math.Max ((byte)1, genes [genes [CostOfDigestionRatioPosition % genes.Length] % genes.Length]);
-			int costOfEnzymeProcessing = Math.Max ((byte)1, genes [genes [CostOfEnzymeProcessingPosition % genes.Length] % genes.Length]);
-			int lengthOfEnzymeChain = Math.Max ((byte)1, genes [genes [LengthOfEnzymeChainPosition % genes.Length] % genes.Length]);
-			int startOfEnzymeChainPosition = genes [genes [StartOfEnzymeChainPosition % genes.Length] % genes.Length];
+			double energyExtractionRatio = (double)genes [genes [Positions [GenePosition.EnergyExtractionRationPosition] % genes.Length] % genes.Length] / 255;
 
-			int decisionSeed_Eat = genes [genes [DecisionSeedPosition_Eat % genes.Length] % genes.Length];
-			int decisionPredicateIndex_Eat = genes [genes [DecisionPredicateIndexPosition_Eat % genes.Length] % genes.Length];
-			int decisionPredicateCount_Eat = genes [genes [DecisionPredicateCountPosition_Eat % genes.Length] % genes.Length];
+			int costOfDigestion = Math.Max ((byte)1, genes [genes [Positions [GenePosition.CostOfDigestionRatioPosition] % genes.Length] % genes.Length]);
+			int costOfEnzymeProcessing = Math.Max ((byte)1, genes [genes [Positions [GenePosition.CostOfEnzymeProcessingPosition] % genes.Length] % genes.Length]);
+			int lengthOfEnzymeChain = Math.Max ((byte)1, genes [genes [Positions [GenePosition.LengthOfEnzymeChainPosition] % genes.Length] % genes.Length]);
+			int startOfEnzymeChainPosition = genes [genes [Positions [GenePosition.StartOfEnzymeChainPosition] % genes.Length] % genes.Length];
 
-			EatStrategy diningMethod = (EatStrategy)(genes [genes [DiningMethodPosition % genes.Length] % genes.Length]
+			int decisionSeed_Eat = genes [genes [Positions [GenePosition.DecisionSeedPosition_Eat] % genes.Length] % genes.Length];
+			int decisionPredicateIndex_Eat = genes [genes [Positions [GenePosition.DecisionPredicateIndexPosition_Eat] % genes.Length] % genes.Length];
+			int decisionPredicateCount_Eat = genes [genes [Positions [GenePosition.DecisionPredicateCountPosition_Eat] % genes.Length] % genes.Length];
+			int decisionPredicateRandomGeneValueCount_Eat = genes [genes [Positions [GenePosition.DecisionPredicateRandomGeneValueCount_Eat] % genes.Length] % genes.Length];
+
+			EatStrategy diningMethod = (EatStrategy)(genes [genes [Positions [GenePosition.DiningMethodPosition] % genes.Length] % genes.Length]
 			                           % Enum.GetValues (typeof(EatStrategy)).Length);
 
 			CreatureCreationContext context = new CreatureCreationContext ();
@@ -56,9 +66,10 @@ namespace ObviousCode.Alchemy.Creatures
 			context.EnergyMaximum = maxEnergy;
 			context.EnergyExtractionRatio = energyExtractionRatio;
 
-			context.DecisionSeed_Eat = (byte)decisionSeed_Eat;
+			context.DecisionRandomSeed_Eat = (byte)decisionSeed_Eat;
 			context.DecisionPredicateCount_Eat = decisionPredicateCount_Eat;
 			context.DecisionPredicateIndex_Eat = decisionPredicateIndex_Eat;
+			context.DecisionPredicate_RandomGeneValueCount_Eat = decisionPredicateRandomGeneValueCount_Eat % 5;
 
 			context.DiningMethod = diningMethod;
 
@@ -77,6 +88,20 @@ namespace ObviousCode.Alchemy.Creatures
 
 			return context;
 		}
+
+		void LoadPositions (byte[] genes)
+		{
+			Positions = new Dictionary<GenePosition, int> ();
+
+			int randomSeed = genes [0];
+
+			Random random = new Random (randomSeed);
+
+			foreach (GenePosition position in Enum.GetValues (typeof(GenePosition))) {
+				Positions [position] = random.Next () % genes.Length;
+			}
+		}
+
 	}
 }
 

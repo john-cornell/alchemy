@@ -6,7 +6,14 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 	{
 		public override bool GetValue ()
 		{
+			Console.WriteLine ();
+			
 			return Stack.Pop ().GetValue () < Stack.Pop ().GetValue ();
+		}
+
+		public override Predicate CreateNew ()
+		{
+			return new LessThanPredicate ();
 		}
 
 		public override string Describe ()

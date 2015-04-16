@@ -14,6 +14,11 @@ namespace ObviousCode.Alchemy.Creatures.DecisionProcessing
 			return "FALSE";
 		}
 
+		public override Predicate CreateNew ()
+		{
+			return new FalsePredicate ();
+		}
+
 		public override PredicateType Type {
 			get {
 				return Predicate.PredicateType.False;
